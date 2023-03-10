@@ -1,17 +1,11 @@
-<?php
-
-use yii\bootstrap5\ActiveForm;
-use yii\helpers\Html;
-
-?>
-
 <h1>
-    here to add cateogries:
+    hello to sub cat
 </h1>
-<div class="container-fluid">
-
-</div>
 <?php
+
+use yii\helpers\Html;
+use yii\bootstrap5\ActiveForm;
+
     $form = ActiveForm::begin() ?>
     <?= $form->field($model, 'name') ?>
     <?= $form->field($model, 'description') ?>

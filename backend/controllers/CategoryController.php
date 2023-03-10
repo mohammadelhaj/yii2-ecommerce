@@ -16,11 +16,12 @@ class CategoryController extends Controller
 
     public function actionIndex()
     {
-        $model = Category::find()->all();
-      
-        
+        $model = Category::find()->where(['<', 'parent_id', 0])->all();
+
+
         return $this->render('index', ['model' => $model]);
     }
+
 
     public function actionAddCategory()
     {
@@ -30,12 +31,7 @@ class CategoryController extends Controller
         if ($model->load(Yii::$app->request->post())) {
             $model->parent_id = -1;
             if ($model->save()) {
-                return $this->render(
-                    'index',
-                    [
-                        'model' => $model
-                    ]
-                );
+                return $this->redirect('index');
             } else {
                 echo "not saved";
             }
@@ -46,11 +42,16 @@ class CategoryController extends Controller
     }
     public function actionUpdateCategory()
     {
-
     }
-
-    public function actionManageSubCategories()
+    public function actionView($category_id, $parent_id = null)
     {
+        $model = Category::findOne(['id' => $category_id]);
+        $subcategory = Category::find()->where(['parent_id' => $model->id])->all();
+
+        return $this->render('view_category', [
+            'model' => $model,
+            'subcategory' => $subcategory,
+        ]);
     }
     public function actionDeleteCategory()
     {
