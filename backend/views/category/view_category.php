@@ -1,7 +1,14 @@
 <?php
 
+use yii\bootstrap5\Breadcrumbs;
 use yii\helpers\Html;
 ?>
+<?php
+// Breadcrumbs::widget([
+//     'links' => isset($breadcrumbs) ? $breadcrumbs : [],
+// ])
+?>
+
 
 <div style="border:1px solid red; float:right;">
     <?= Html::a('add sub category', ['subcategory/add-subcategory', 'parent_id' => $model->id], ['class' => 'btn btn-link logout text-decoration-none']) ?>
@@ -42,9 +49,7 @@ use yii\helpers\Html;
         <button>edit this category</button>
     </div>
     <div class="col-md-4 border border-danger">
-        <?php
-        foreach ($subcategory as $sub) :
-        ?>
+        <?php foreach ($subcategory as $sub) : ?>
             <?= $sub->name ?></br>
             <?= Html::a('view sub cat for this sub', ['category/view', 'category_id' => $sub->id, 'parent_id' => $sub->parent_id], ['class' => 'btn btn-link logout text-decoration-none']) ?>
             <?= Html::a('add a sub to this cate', ['subcategory/add-subcategory', 'parent_id' => $sub->id], ['class' => 'btn btn-link logout text-decoration-none']) ?>
@@ -54,5 +59,7 @@ use yii\helpers\Html;
     <div class="col-md-4 border border-danger">
         pricture
     </div>
+</div>
+
 
 </div>
