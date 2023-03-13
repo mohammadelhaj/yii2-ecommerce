@@ -8,6 +8,7 @@ use yii\bootstrap5\ActiveForm;
 
     $form = ActiveForm::begin() ?>
     <?= $form->field($model, 'name') ?>
+    <?= $form->field($model, 'title') ?>
     <?= $form->field($model, 'description') ?>
 
     <div class="form-group">

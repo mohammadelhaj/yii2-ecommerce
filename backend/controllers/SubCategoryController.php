@@ -19,6 +19,7 @@ class SubcategoryController extends Controller
     public function actionAddSubcategory($parent_id)
     {
         $model = new Category();
+       
         if ($model->load(Yii::$app->request->post())) {
 
             $model->parent_id = $parent_id;

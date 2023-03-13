@@ -40,6 +40,17 @@ class CategoryController extends Controller
             'model' => $model,
         ]);
     }
+     //check if a sub exist for a category or for another sub
+     public function subExist($id)
+     {
+         $subcategories = Category::find()->where(['parent_id' => $id])->all();
+ 
+         if (!empty($subcategories)) {
+             return true;
+         }
+ 
+         return false;
+     }
     public function actionUpdateCategory()
     {
     }
@@ -52,28 +63,11 @@ class CategoryController extends Controller
         return $this->render('view_category', [
             'model' => $model,
             'subcategory' => $subcategory,
-            // 'breadcrumbs' => $breadcrumbs,
+           
         ]);
     }
     
-//     private function getBreadcrumbs($model, $breadcrumbs = [])
-// {
-//     if (!$model->parent_id) {
-//         return $breadcrumbs;
-//     }
 
-//     $parent = Category::findOne(['id' => $model->parent_id]);
-//     if (!$parent) {
-//         return $breadcrumbs;
-//     }
-
-//     array_unshift($breadcrumbs, [
-//         'label' => $parent->name,
-//         'url' => ['category/view', 'category_id' => $parent->id],
-//     ]);
-
-//     return $this->getBreadcrumbs($parent, $breadcrumbs);
-// }
 
     public function actionDeleteCategory()
     {

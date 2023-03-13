@@ -9,7 +9,7 @@ use yii\bootstrap5\Carousel;
     <div class="row">
         <div class="col-12 col-md-8 offset-md-2">
             <h1>Multiple Image File Upload with Preview</h1>
-            <form action="upload_file.php" id="img-upload-form" method="post" enctype="multipart/form-data">
+            <form action="upload_file.php"  method="post">
                 <div class="mb-3">
                     <label for="upload_imgs" class="btn btn-outline-primary">Select Your Images +</label>
                     <input class="form-control" type="file" id="upload_imgs" name="upload_imgs[]" multiple />
