@@ -29,8 +29,10 @@ class Slider extends ActiveRecord
     {
         return [
             [['name'], 'required'],
-            [['name'], 'file', 'extensions' => 'png, jpg, jpeg, gif,webp'],
+        
+            [['name'], 'file', 'extensions' => 'png, jpg, jpeg, gif,webp','maxFiles' => 5,'skipOnEmpty' => false],
           
         ];
     }
+    
 }

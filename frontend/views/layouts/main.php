@@ -72,9 +72,7 @@ AppAsset::register($this);
     </div>
 </main>
 
-<footer class="footer mt-auto py-3 text-muted">
-  
-</footer>
+
 
 <?php $this->endBody() ?>
 </body>
