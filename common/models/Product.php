@@ -2,7 +2,7 @@
 
 namespace common\models;
 
-
+use yii\data\ActiveDataProvider;
 use yii\db\ActiveRecord;
 
 
@@ -20,8 +20,10 @@ class Product extends ActiveRecord
     public function rules()
     {
         return [
-            [['name','price'], 'required'],
-          
+            [['name', 'price', 'currency'], 'required'],
+            [['description', 'category_id',], 'safe'],
+
+
         ];
     }
     // public function getParent()
