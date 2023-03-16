@@ -4,6 +4,6 @@
 
 $this->title = 'Dashbord';
 ?>
-<div>
+<h1>
     welcome world
-</div>
+</h1>

@@ -4,6 +4,7 @@
 /** @var string $content */
 
 use backend\assets\AppAsset;
+use yii\bootstrap5\Breadcrumbs;
 use yii\helpers\Html;
 
 
@@ -23,68 +24,17 @@ AppAsset::register($this);
 </head>
 
 <body class="d-flex flex-column h-100">
+
     <?php $this->beginBody() ?>
+    <?php
+    echo $this->render('_sidebar'); ?>
+    <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
+        
 
-    <header>
-        <nav class="navbar navbar-expand-lg navbar-dark bg-dark border border-primary">
-            <div class="container-fluid">
-                <a class="navbar-brand" href="#">Dashbord</a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                        <li class="nav-item">
-                            <a class="nav-link active" aria-current="page" href="#">Home</a>
-                        </li>
-
-                        <?php
-                        if (!Yii::$app->user->isGuest) {
-
-                        ?>
-                            <li class="nav-item">
-                                <?= Html::beginForm(['/site/logout'], 'post', ['class' => 'd-flex'])
-                                    . Html::submitButton(
-                                        'Logout (' . Yii::$app->user->identity->username . ')',
-                                        ['class' => 'btn btn-link logout text-decoration-none']
-                                    )
-                                    . Html::endForm(); ?>
-                            </li>
-                        <?php
-                        } else?>
-                        <?php
-                        if (Yii::$app->user->isGuest) {
-
-                        ?>
-                            <li class="nav-item">
-                                <?= Html::a('sign in', ['site/login'], ['class' => 'nav-link']); ?>
-                            </li>
-                        <?php
-                        } ?>
-
-                    </ul>
-                    <form class="d-flex">
-                        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-                        <button class="btn btn-outline-success" type="submit">Search</button>
-                    </form>
-                </div>
-            </div>
-        </nav>
-    </header>
-
-    <main role="main" class="flex-shrink-0">
-        <div class="container-fluid">
-            <div class="row">
-                <?php echo $this->render('_sidebar'); ?>
-                <div class="col-md-10">
-                    <?= $content ?>
-
-                </div>
-
-            </div>
+        <?= $content ?>
     </main>
 
-   
+
 
     <?php $this->endBody() ?>
 </body>

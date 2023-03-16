@@ -2,7 +2,10 @@
 
 use yii\bootstrap5\ActiveForm;
 use yii\helpers\Html;
-
+$this->params['breadcrumbs'][] = ['label' => 'Categories', 'url' => ['index']];
+foreach ($breadcrumbs as $breadcrumb) {
+    $this->params['breadcrumbs'][] = $breadcrumb;
+}
 ?>
 
 <h1>
