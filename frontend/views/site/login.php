@@ -8,34 +8,33 @@ use yii\bootstrap5\Html;
 use yii\bootstrap5\ActiveForm;
 
 $this->title = 'Login';
-$this->params['breadcrumbs'][] = $this->title;
+
 ?>
-<div class="site-login">
-    <h1><?= Html::encode($this->title) ?></h1>
+<div class="container pt-0 mt-0">
+    <div class="row justify-content-center">
 
-    <p>Please fill out the following fields to login:</p>
+        <div class="col-md-6 w-50">
+            <div class="card mt-0">
+                <div class="card-body">
 
-    <div class="row">
-        <div class="col-lg-5">
-            <?php $form = ActiveForm::begin(['id' => 'login-form']); ?>
-
-                <?= $form->field($model, 'username')->textInput(['autofocus' => true]) ?>
-
-                <?= $form->field($model, 'password')->passwordInput() ?>
-
-                <?= $form->field($model, 'rememberMe')->checkbox() ?>
-
-                <div class="my-1 mx-0" style="color:#999;">
-                    If you forgot your password you can <?= Html::a('reset it', ['site/request-password-reset']) ?>.
-                    <br>
-                    Need new verification email? <?= Html::a('Resend', ['site/resend-verification-email']) ?>
+                    <h1 class="card-title text-center"><?= Html::encode($this->title) ?></h1>
+                    <p class="card-text text-center">Please fill out the following fields to login:</p>
+                    <?php $form = ActiveForm::begin(['id' => 'login-form']); ?>
+                        <?= $form->field($model, 'username')->textInput(['class' => 'form-control', 'autofocus' => true]) ?>
+                        <?= $form->field($model, 'password')->passwordInput(['class' => 'form-control']) ?>
+                        <?= $form->field($model, 'rememberMe')->checkbox(['class' => 'form-check-input']) ?>
+                        <div class="text-center mt-3">
+                            <?= Html::submitButton('Login', ['class' => 'btn btn-primary', 'name' => 'login-button']) ?>
+                        </div>
+                    <?php ActiveForm::end(); ?>
+                    <div class="mt-3 text-center">
+                        If you forgot your password you can <?= Html::a('reset it', ['site/request-password-reset']) ?>.
+                        <br>
+                        Need new verification email? <?= Html::a('Resend', ['site/resend-verification-email']) ?>
+                    </div>
                 </div>
-
-                <div class="form-group">
-                    <?= Html::submitButton('Login', ['class' => 'btn btn-primary', 'name' => 'login-button']) ?>
-                </div>
-
-            <?php ActiveForm::end(); ?>
+            </div>
         </div>
     </div>
 </div>
+

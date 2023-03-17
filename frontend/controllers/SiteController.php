@@ -2,6 +2,7 @@
 
 namespace frontend\controllers;
 
+use common\models\Category;
 use frontend\models\ResendVerificationEmailForm;
 use frontend\models\VerifyEmailForm;
 use Yii;
@@ -11,6 +12,7 @@ use yii\web\Controller;
 use yii\filters\VerbFilter;
 use yii\filters\AccessControl;
 use common\models\LoginForm;
+use common\models\Product;
 use frontend\models\PasswordResetRequestForm;
 use frontend\models\ResetPasswordForm;
 use frontend\models\SignupForm;
@@ -75,7 +77,15 @@ class SiteController extends Controller
      */
     public function actionIndex()
     {
-        return $this->render('index');
+        $parentCategories = Category::find()->where(['parent_id' => -1])->all();
+        $allProducts = Product::find()
+            ->innerJoin('category', 'category.id = product.category_id')
+            ->all();
+
+        return $this->render('index', [
+            'parentCategories' => $parentCategories,
+            'allProducts' => $allProducts,
+        ]);
     }
 
     /**

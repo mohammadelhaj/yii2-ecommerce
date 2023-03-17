@@ -56,7 +56,7 @@ use yii\helpers\Url;
                 <div class="card">
                     <div class="card-body">
                         <h5 class="card-title"><?= $sub->name ?></h5>
-                        <a href="<?= \yii\helpers\Url::to(['category/view', 'category_id' => $sub->id, 'parent_id' => $sub->parent_id]) ?>" class="btn btn-primary">View sub category</a>
+                        <a href="<?= Url::to(['category/view', 'category_id' => $sub->id, 'parent_id' => $sub->parent_id]) ?>" class="btn btn-primary">View sub category</a>
                         <?= Html::a('Add sub category', ['subcategory/add-subcategory', 'parent_id' => $sub->id], ['class' => 'btn btn-success']) ?>
                     </div>
                 </div>

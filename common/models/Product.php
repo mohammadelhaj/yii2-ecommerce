@@ -26,10 +26,14 @@ class Product extends ActiveRecord
 
         ];
     }
-    // public function getParent()
-    // {
-    //     return $this->hasOne(Category::class, ['id' => 'parent_id']);
-    // }
+    public function getCategory()
+    {
+        return $this->hasOne(Category::class, ['id' => 'category_id']);
+    }
+    public function getImages()
+    {
+        return $this->hasMany(Product::class, ['product_id' => 'id']);
+    }
 
     // public function getSubcategories()
     // {

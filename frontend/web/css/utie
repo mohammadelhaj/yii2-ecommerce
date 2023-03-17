@@ -1,0 +1,63 @@
+<li class="nav-item dropdown">
+    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown"
+        aria-expanded="false">
+        Dropdown
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+        <li><a class="dropdown-item" href="#">Dropdown Item</a></li>
+        <li><a class="dropdown-item" href="#">Dropdown Item</a></li>
+        <li>
+            <hr class="dropdown-divider" />
+        </li>
+
+        <li class="dropdown-submenu dropend">
+            <div class="row">
+                <div class="col-md-10">
+                    <a href="frontend.site">
+                        cars
+                    </a>
+                </div>
+            </div>
+            <a href="frontend.site" role="button" class="dropdown-item " data-bs-toggle="dropdown"
+                aria-expanded="false">asd</a>
+            <ul class="dropdown-menu dropdown-submenu">
+                <li><a href="#" class="dropdown-item">Dropdown Item</a></li>
+                <li><a href="#" class="dropdown-item">Dropdown Item</a></li>
+                <li><a href="#" class="dropdown-item">Dropdown Item</a></li>
+                <li>
+                    <hr class="dropdown-divider" />
+                </li>
+                <li class="dropdown-multilevel dropend">
+                    <a href="#" role="button" class="dropdown-item dropdown-toggle" data-bs-toggle="dropdown"
+                        aria-expanded="false">Level 2.2 (Right) Item</a>
+                    <ul class="dropdown-menu dropdown-multilevel">
+                        <li><a href="#" class="dropdown-item">Dropdown Item</a></li>
+                        <li><a href="#" class="dropdown-item">Dropdown Item</a></li>
+                        <li><a href="#" class="dropdown-item">Dropdown Item</a></li>
+                        <li>
+                            <hr class="dropdown-divider" />
+                        </li>
+                        <li><a href="#" class="dropdown-item">Level 3.3 (Right) Item</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </li>
+
+    </ul>
+</li>
+<script>
+ $(".dropdown-menu [data-bs-toggle='dropdown']").on("click", function (event) {
+        event.preventDefault();
+        event.stopPropagation();
+        $(this).parents(".dropdown-menu").first().find(".show").removeClass("show");
+        $(this).parents(".dropdown-menu").first().find("[aria-expanded='true']").attr("aria-expanded", false);
+        $(this).attr("aria-expanded", true);
+        $(this).siblings(".dropdown-menu").toggleClass("show");
+        $(this)
+            .parents(".nav-item.dropdown")
+            .on("hidden.bs.dropdown", function (e) {
+                $(".dropdown-submenu .show").removeClass("show");
+                $(".dropdown-submenu [aria-expanded='true']").attr("aria-expanded", false);
+            });
+    });
+</script>
