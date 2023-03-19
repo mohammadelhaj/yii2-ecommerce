@@ -30,9 +30,15 @@ class Product extends ActiveRecord
     {
         return $this->hasOne(Category::class, ['id' => 'category_id']);
     }
-    public function getImages()
+
+    public function getProductImages()
     {
-        return $this->hasMany(Product::class, ['product_id' => 'id']);
+        return $this->hasMany(ProductImage::class, ['product_id' => 'id']);
+    }
+
+    public function getCurrencyName()
+    {
+        return $this->hasOne(Currency::class, ['id' => 'currency']);
     }
 
     // public function getSubcategories()

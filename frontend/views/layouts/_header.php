@@ -2,9 +2,45 @@
 
 use common\models\Category;
 use yii\helpers\Html;
+use yii\helpers\Url;
 
 
-$parentCategories = Category::find()->where(['parent_id' => -1])->all();
+$categories = Category::find()->all();
+// print_r($categories);
+// exit;
+
+function getCategories($categories, $parent_id = -1)
+{
+    $result = '';
+
+    foreach ($categories as $category) {
+        if ($category->parent_id == $parent_id) {
+            if ($parent_id == -1) {
+                $result .= '<li class="nav-item dropdown">';
+            } else {
+                $result .= '<li class="nav-item dropdown dropend">';
+            }
+
+
+            if ($category->getSubcategories()->count() > 0) {
+
+                $result .= '<a class="nav-link dropdown-toggle dropdown-item" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="true">'
+                    . $category->name .
+                    '</a>';
+                $result .= '<ul class="dropdown-menu dropdown-submenu" aria-labelledby="navbarDropdown">';
+                $result .= getCategories($category->getSubcategories()->all(), $category->id);
+                $result .= '</ul>';
+            } else {
+
+                $result .= '<a class="nav-link" href="' . Url::to(['product/all', 'category_id' => $category->id]) . '">' . $category->name . '</a>';
+            }
+
+            $result .= '</li>';
+        }
+    }
+
+    return $result;
+}
 ?>
 <header class="section-header">
 
@@ -80,15 +116,18 @@ $parentCategories = Category::find()->where(['parent_id' => -1])->all();
                     </div>
                 </div>
                 <div class="col-md-2">
-                    <div class="d-flex d-none d-md-flex flex-row align-items-center">
-                        <span class="shop-bag">
-                            <i class='fa fa-plus'>
-                            </i>
-                        </span>
-                        <div class="d-flex flex-column ms-2">
-                            <span class="fw-bold">add a product</span>
+                    <a href=<?= Url::to(['product/add-product']) ?> class="text-decoration-none">
+                        <div class="d-flex d-none d-md-flex flex-row align-items-center">
+                            <span class="shop-bag">
+                                <i class='fa fa-plus'>
+                                </i>
+                            </span>
+                            <div class="d-flex flex-column ms-2">
+                                <span class="fw-bold">add a product</span>
+                            </div>
                         </div>
-                    </div>
+                    </a>
+
                 </div>
 
             </div>
@@ -101,51 +140,13 @@ $parentCategories = Category::find()->where(['parent_id' => -1])->all();
             </button>
             <div class="collapse navbar-collapse" id="navbarNavDropdown">
                 <ul class="navbar-nav">
-                    <?php
-                    foreach ($parentCategories as $category) {
-                    ?>
-                        <li class="nav-item">
-                            <a class="nav-link active" aria-current="page" href="#"><?= $category['name'] ?></a>
-                        </li>
-                    <?php
-                    }
-                    ?>
+
                     <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                            Dropdown
-                        </a>
-                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <li><a class="dropdown-item" href="#">Dropdown Item</a></li>
-                            <li><a class="dropdown-item" href="#">Dropdown Item</a></li>
-                            <li>
-                                <hr class="dropdown-divider" />
-                            </li>
-
-                            <li class="dropdown-submenu dropend">
-                                <a href="frontend.site" role="button" class="dropdown-item " data-bs-toggle="dropdown" aria-expanded="false">cars</a>
-                                <ul class="dropdown-menu dropdown-submenu">
-                                    <li><a href="#" class="dropdown-item">Dropdown Item</a></li>
-                                    <li><a href="#" class="dropdown-item">Dropdown Item</a></li>
-                                    <li><a href="#" class="dropdown-item">Dropdown Item</a></li>
-                                    <li>
-                                        <hr class="dropdown-divider" />
-                                    </li>
-                                    <li class="dropdown-multilevel dropend">
-                                        <a href="#" role="button" class="dropdown-item dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">Level 2.2 (Right) Item</a>
-                                        <ul class="dropdown-menu dropdown-multilevel">
-                                            <li><a href="#" class="dropdown-item">Dropdown Item</a></li>
-                                            <li><a href="#" class="dropdown-item">Dropdown Item</a></li>
-                                            <li><a href="#" class="dropdown-item">Dropdown Item</a></li>
-                                            <li>
-                                                <hr class="dropdown-divider" />
-                                            </li>
-                                            <li><a href="#" class="dropdown-item">Level 3.3 (Right) Item</a></li>
-                                        </ul>
-                                    </li>
-                                </ul>
-                            </li>
-
-                        </ul>
+                        <?php
+                        echo '<ul class="navbar-nav">';
+                        echo getCategories($categories);
+                        echo '</ul>';
+                        ?>
                     </li>
                 </ul>
             </div>

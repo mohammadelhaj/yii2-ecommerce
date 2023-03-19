@@ -77,14 +77,12 @@ class SiteController extends Controller
      */
     public function actionIndex()
     {
-        $parentCategories = Category::find()->where(['parent_id' => -1])->all();
-        $allProducts = Product::find()
-            ->innerJoin('category', 'category.id = product.category_id')
-            ->all();
+        $allProducts = Product::find()->all();
+    
 
         return $this->render('index', [
-            'parentCategories' => $parentCategories,
-            'allProducts' => $allProducts,
+        
+            'products' => $allProducts,
         ]);
     }
 

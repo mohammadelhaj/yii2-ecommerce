@@ -41,7 +41,12 @@ class ProductController extends Controller
                 foreach ($image->image_name as $image) {
                     $img = new ProductImage();
                     $img->image_name = time() . rand(100, 999) . '.' . $image->extension;
-                    $img->product_id = $lastProduct->id + 1;
+                    if ($img->product_id == null) {
+                        $img->product_id = 1;
+                    } else {
+                        $img->product_id = $lastProduct->id + 1;
+                    }
+
                     if ($img->save(false)) {
                         $image->saveAs($path . $img->image_name);
                     }
