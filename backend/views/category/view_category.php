@@ -40,15 +40,7 @@ use yii\helpers\Url;
     </div>
 
     <div class="row">
-        <div class="col-md-6">
-            <h4 class="my-4"><u>Category</u></h4>
-            <div class="card">
-                <div class="card-body">
-                    <h5 class="card-title"><?= $model->name ?></h5>
-                    <p class="card-text"><?= $model->description ?></p>
-                </div>
-            </div>
-        </div>
+      
 
         <div class="col-md-6">
             <h4 class="my-4"><u>Sub categories</u></h4>

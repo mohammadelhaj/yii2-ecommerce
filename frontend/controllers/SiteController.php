@@ -13,6 +13,7 @@ use yii\filters\VerbFilter;
 use yii\filters\AccessControl;
 use common\models\LoginForm;
 use common\models\Product;
+use common\models\Slider;
 use frontend\models\PasswordResetRequestForm;
 use frontend\models\ResetPasswordForm;
 use frontend\models\SignupForm;
@@ -77,12 +78,13 @@ class SiteController extends Controller
      */
     public function actionIndex()
     {
-        $allProducts = Product::find()->all();
-    
+        $allProducts = Product::find()->where(['!=', 'created_by', Yii::$app->user->id])->all();
+        $slider = Slider::find()->all();
 
         return $this->render('index', [
-        
+
             'products' => $allProducts,
+            'slider' => $slider
         ]);
     }
 

@@ -9,7 +9,7 @@ use yii\helpers\Html;
 </div>
 
 <div class="container">
-    <h1 class="text-center">Hello Index Category</h1>
+    <h1 class="text-center">all Categories</h1>
 
     <ul class="list-group">
         <?php foreach ($model as $model) : ?>

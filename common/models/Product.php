@@ -40,9 +40,10 @@ class Product extends ActiveRecord
     {
         return $this->hasOne(Currency::class, ['id' => 'currency']);
     }
+    public function getCreatedby()
+    {
+        return $this->hasOne(User::class, ['id' => 'created_by']);
+    }
 
-    // public function getSubcategories()
-    // {
-    //     return $this->hasMany(Category::class, ['parent_id' => 'id']);
-    // }
+    
 }

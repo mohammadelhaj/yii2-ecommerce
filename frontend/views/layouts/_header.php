@@ -1,6 +1,8 @@
 <?php
 
 use common\models\Category;
+use common\models\Product;
+use yii\bootstrap5\ActiveForm;
 use yii\helpers\Html;
 use yii\helpers\Url;
 
@@ -58,16 +60,16 @@ function getCategories($categories, $parent_id = -1)
 
                     ?>
                         <div class="d-flex flex-row">
-                            <img src="https://i.imgur.com/EYFtR83.jpg" class="rounded-circle" width="30">
+                            <img src="" class="rounded-circle" width="30">
                         </div>
                 </li>
                 <li class="nav-item">
-                    <a href="#" class="nav-link d-flex align-items-center" data-abc="true"><span>Nantano M</span><i class='bx bxs-chevron-down'></i></a>
+                    <a href="<?= Url::to(['profile/index']) ?>" class="nav-link d-flex align-items-center" data-abc="true"><span><?= Yii::$app->user->identity->username ?></span><i class='bx bxs-chevron-down'></i></a>
                 </li>
                 <li class="nav-item">
                     <?= Html::beginForm(['/site/logout'], 'post', ['class' => 'd-flex'])
                             . Html::submitButton(
-                                'Logout (' . Yii::$app->user->identity->username . ')',
+                                'Logout',
                                 ['class' => 'btn btn-link logout text-decoration-none']
                             )
                             . Html::endForm(); ?>
@@ -96,10 +98,18 @@ function getCategories($categories, $parent_id = -1)
                     <?= Html::a('<h3>Ecommerce</h3>', ['site/index'], ['class' => 'nav-link d-flex align-items-center']); ?>
                 </div>
                 <div class="col-md-7">
+                    <?php
+                    $model = new Product();
+                    $form = ActiveForm::begin(['action' => ['search/search']]); ?>
                     <div class="d-flex form-inputs">
-                        <input class="form-control" type="text" placeholder="Search any product...">
+
+
+                        <input class="form-control" id="product-id" name="Product[name]" type="text" placeholder="Search any product...">
+                        <button style="display: none;" type="submit" class="btn btn-primary"><i class="fa fa-search"></i></button>
                         <i class="fa fa-search"></i>
+
                     </div>
+                    <?php $form = ActiveForm::end(); ?>
                 </div>
 
                 <div class="col-md-1">

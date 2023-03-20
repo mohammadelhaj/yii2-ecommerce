@@ -78,10 +78,11 @@ class ProductController extends Controller
 
         return  $subs;
     }
-    public function actionSearch()
+    public function actionView($product_id)
     {
-        $search = Product::find()->where(['like', 'name', $_GET['q'] . '%', false]);
-
-        return $this->render('search', ['model' => $search]);
+        $model = Product::find()->where(['id' => $product_id])->one();
+        return $this->render('view',[
+            'model' => $model,
+        ]);
     }
 }

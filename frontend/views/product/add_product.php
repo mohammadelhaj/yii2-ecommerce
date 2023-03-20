@@ -2,14 +2,17 @@
 
 use yii\bootstrap5\ActiveForm;
 use yii\helpers\Html;
-use yii\helpers\Url;
 
 
 ?>
 
 
 <div class="container">
-    <?php $form = ActiveForm::begin(['options' => ['enctype' => 'multipart/form-data']]); ?>
+    <?php 
+    if (Yii::$app->user->isGuest) {
+      echo "<h1>please log in to add product";
+    }else {
+    $form = ActiveForm::begin(['options' => ['enctype' => 'multipart/form-data']]); ?>
     <?= $form->field($model, 'category_id')->dropDownList(
         $parent,
         ['prompt' => 'Select a category', 'id' => 'select', 'data-lvl' => '1']
@@ -43,5 +46,5 @@ use yii\helpers\Url;
         </div>
 
     </div>
-    <?php $form = ActiveForm::end(); ?>
+    <?php $form = ActiveForm::end(); } ?>
 </div>
