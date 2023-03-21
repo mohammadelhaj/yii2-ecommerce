@@ -111,21 +111,7 @@ function getCategories($categories, $parent_id = -1)
                     </div>
                     <?php $form = ActiveForm::end(); ?>
                 </div>
-
-                <div class="col-md-1">
-                    <div class="d-flex d-none d-md-flex flex-row align-items-center">
-                        <span class="shop-bag">
-                            <i class='fa fa-shopping-cart'>
-
-                            </i>
-                        </span>
-                        <div class="d-flex flex-column ms-2">
-                            <span class="qty">1 Product</span>
-                            <span class="fw-bold">$27.90</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-2">
+                <div class="col-md-3">
                     <a href=<?= Url::to(['product/add-product']) ?> class="text-decoration-none">
                         <div class="d-flex d-none d-md-flex flex-row align-items-center">
                             <span class="shop-bag">
@@ -134,6 +120,7 @@ function getCategories($categories, $parent_id = -1)
                             </span>
                             <div class="d-flex flex-column ms-2">
                                 <span class="fw-bold">add a product</span>
+                                
                             </div>
                         </div>
                     </a>

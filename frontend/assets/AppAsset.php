@@ -17,6 +17,8 @@ class AppAsset extends AssetBundle
     ];
     public $js = [
         'js/handleDropdown.js',
+        'js/bootstrap-notify.min.js',
+        'js/bootstrap-notify.js',       
     ];
     public $depends = [
         'yii\web\YiiAsset',

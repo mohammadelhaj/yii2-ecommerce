@@ -1,3 +1,7 @@
+<?php
+
+use yii\helpers\Html;
+?>
 <section style="background-color: #eee;">
     <div class="container py-3">
 
@@ -57,7 +61,17 @@
                     <div class="col-md-6">
                         <div class="card mb-4 mb-md-0">
                             <div class="card-body">
-                                <p class="mb-4"><span class="text-primary font-italic me-1">Sold products</span>
+                                <p class="mb-4">
+                                    <span class="text-primary font-italic me-1">
+                                        <?= Html::a(
+                                            'Sold products',
+                                            ['order/sold-products'],
+                                            [
+                                                'class' => 'text-decoration-none',
+                                            ]
+                                        );
+                                        ?>
+                                    </span>
                                 </p>
                             </div>
                         </div>
@@ -65,17 +79,35 @@
                     <div class="col-md-6">
                         <div class="card mb-4 mb-md-1">
                             <div class="card-body">
-                                <p class="mb-4"><span class="text-primary font-italic me-1">bought products:</span>
+                                <p class="mb-4">
+                                    <span class="text-primary font-italic me-1">
+                                        <?= Html::a(
+                                            'bought products:',
+                                            ['order/bought-products'],
+                                            [
+                                                'class' => 'text-decoration-none',
+                                            ]
+                                        );
+                                        ?>
+                                    </span>
                                 </p>
-
-
                             </div>
                         </div>
                     </div>
                     <div class="col-md-6">
                         <div class="card mb-4 ">
                             <div class="card-body">
-                                <p class="mb-4"><span class="text-primary font-italic me-1">accept to sell your products</span>
+                                <p class="mb-4">
+                                    <span class="text-primary font-italic me-1">
+                                        <?= Html::a(
+                                            'accept to sell your product',
+                                            ['order/accept-orders'],
+                                            [
+                                                'class' => 'text-decoration-none',
+                                            ]
+                                        );
+                                        ?>
+                                    </span>
                                 </p>
                             </div>
                         </div>
@@ -83,7 +115,16 @@
                     <div class="col-md-6">
                         <div class="card mb-4 mb-md-0">
                             <div class="card-body">
-                                <p class="mb-4"><span class="text-primary font-italic me-1">your waiting list</span>
+                                <p class="mb-4"><span class="text-primary font-italic me-1">
+                                        <?= Html::a(
+                                            'your waiting list:',
+                                            ['order/waiting-list'],
+                                            [
+                                                'class' => 'text-decoration-none',
+                                            ]
+                                        );
+                                        ?>
+                                    </span>
                                 </p>
                             </div>
                         </div>

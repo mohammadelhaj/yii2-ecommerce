@@ -1,16 +1,22 @@
+<?php
+
+use yii\helpers\Html; ?>
 <div class="container my-5">
     <div class="row">
         <div class="col-md-5">
             <div class="main-img">
-                <img class="img-fluid" src="http://static.local/<?= $model->productImages[0]->image_name ?>">
+                <img class="img-fluid" src="http://static.local/<?= $model->productImages[0]->image_name ?>" width="510px" height="340px">
                 <div class="row my-3 previews">
-                    <?php 
-                    foreach ($model->productImages as $img) {  
+                    <?php
+
+
+
+                    foreach ($model->productImages as $img) {
                     ?>
-                    <div class="col-md-3">
-                        <img class="w-100" src="http://static.local/<?= $img->image_name ?>" alt="Sale">
-                    </div>
-                <?php }?>
+                        <div class="col-md-3">
+                            <img class="w-100" src="http://static.local/<?= $img->image_name ?>" alt="Sale">
+                        </div>
+                    <?php } ?>
                 </div>
             </div>
         </div>
@@ -28,16 +34,21 @@
                     </p>
                     <p class="mb-1 display-6"><?= $model->price ?> (<?= $model->currencyName->currency_name ?>)</p>
                 </div>
-              
+
                 <div class="my-4">
                     <h3 class="text-muted mb-3">Product Details</h3>
                     <p><?= $model->description ?></p>
                 </div>
                 <div class="d-flex my-5">
                     <div class="me-3">
-                        <button class="btn btn-primary shadow">Buy Now</button>
+                        <?= Html::a('go to billing', ['order/checkout', 'product_id' => $model->id, 'owned_by' => $model->created_by], [
+                            'class' => 'btn btn-primary shadow',
+                        ]);
+                        ?>
+
+
                     </div>
-                    
+
                 </div>
             </div>
         </div>
