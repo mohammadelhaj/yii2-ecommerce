@@ -39,6 +39,10 @@ use yii\helpers\Html; ?>
                     <h3 class="text-muted mb-3">Product Details</h3>
                     <p><?= $model->description ?></p>
                 </div>
+                <?php 
+                if (!Yii::$app->user->id) {                
+                
+                ?>
                 <div class="d-flex my-5">
                     <div class="me-3">
                         <?= Html::a('go to billing', ['order/checkout', 'product_id' => $model->id, 'owned_by' => $model->created_by], [
@@ -50,6 +54,7 @@ use yii\helpers\Html; ?>
                     </div>
 
                 </div>
+                <?php } ?>
             </div>
         </div>
 

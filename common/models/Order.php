@@ -36,4 +36,12 @@ class Order extends ActiveRecord
     {
         return $this->hasOne(Product::class, ['id' => 'product_id']);
     }
+    public function getBuyer()
+    {
+        return $this->hasOne(User::class, ['id' => 'user_id']);
+    }
+    public function getSeller()
+    {
+        return $this->hasOne(User::class, ['id' => 'seller_id']);
+    }
 }

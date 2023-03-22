@@ -20,7 +20,6 @@ echo $this->render('_carousel', ['slider' => $slider]);
 
     <?php
     foreach ($products as $product) {
-
     ?>
         <div class="col-md-3 mb-3">
             <div class="card text-black">
@@ -31,23 +30,26 @@ echo $this->render('_carousel', ['slider' => $slider]);
                 <div class="card-body">
                     <div class="text-center">
                         <h5 class="card-title"><?= $product->name ?></h5>
-
                     </div>
                     <div>
                         <div class="d-flex justify-content-between">
+
                             <span>Category: <?= $product->category->name ?></span> <span>added by: <?= $product->createdby->username ?></span>
                         </div>
                     </div>
                     <div class="d-flex justify-content-left font-weight-bold mt-1">
-                        <span>price: <?= $product->price ?> (<?= $product->currencyName->currency_name ?>)</span>
+                        <p class="mb-1 ">price: <span> <?= $product->price ?> (<?= $product->currencyName->currency_name ?>)</span>
+                            <del><?= (int)($product->price + ((20 * $product->price) / 100)) ?> (<?= $product->currencyName->currency_name ?>)</del>
+                            <span class="text-danger">(20% off)</span>
+                        </p>
+                       
                     </div>
                     <div class="d-flex justify-content-left font-weight-bold mt-4">
                         <?= Html::a('<i class="fa fa-eye"></i> view product', ['product/view', 'product_id' => $product->id], ['class' => 'btn btn-danger flex-fill ms-1']); ?>
-
                     </div>
                 </div>
             </div>
         </div>
-
-    <?php } ?>
+    <?php }
+    ?>
 </div>

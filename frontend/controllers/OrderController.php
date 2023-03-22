@@ -6,6 +6,7 @@ use common\models\Order;
 use common\models\Product;
 use Yii;
 use yii\web\Controller;
+use yii\filters\AccessControl;
 
 
 /**
@@ -13,6 +14,22 @@ use yii\web\Controller;
  */
 class OrderController extends Controller
 {
+    public function behaviors()
+    {
+        return [
+            'access' => [
+                'class' => AccessControl::class,
+                'only' => ['checkout', 'logout', 'bought-products', 'sold-products', 'accept-orders', 'waiting-list', 'accept-order','reject-order',],
+                'rules' => [
+                    [
+                        'allow' => true,
+                        'actions' => ['checkout', 'bought-products', 'sold-products', 'accept-orders', 'waiting-list', 'accept-order','reject-order'],
+                        'roles' => ['@'],
+                    ],
+                ],
+            ],
+        ];
+    }
     public function actionCheckout($product_id, $owned_by)
     {
         $user = Yii::$app->user->id;
@@ -49,6 +66,7 @@ class OrderController extends Controller
     {
         $user = Yii::$app->user->id;
         $model = Order::find()->where(['seller_id' => $user, 'order_status' => 'confirmed'])->all();
+
         return $this->render('soldProducts', [
             'model' => $model,
         ]);
@@ -68,5 +86,29 @@ class OrderController extends Controller
         return $this->render('waitingList', [
             'model' => $model,
         ]);
+    }
+    public function actionAcceptOrder($buyer_id, $product_id)
+    {
+        $accept = Order::findOne(['user_id' => $buyer_id, 'product_id' => $product_id]);
+        $accept->order_status = "confirmed";
+
+        $prod = Product::findOne($product_id);
+        $prod->status = "sold";
+        $rejectOtherRequests = Order::find()->where(['product_id' => $product_id])
+            ->andWhere(['!=', 'user_id', $buyer_id])
+            ->all();
+        if (!empty($rejectOtherRequests)) {
+            foreach ($rejectOtherRequests as $req) {
+                $req->status = "rejected";
+                $req->save();
+            }
+        }
+        if ($accept->save() && $prod->save()) {
+            return $this->redirect(['order/accept-orders']);
+        }
+        return $this->redirect(['order/accept-orders']);
+    }
+    public function actionRejectOrder($buyer_id, $product_id)
+    {
     }
 }

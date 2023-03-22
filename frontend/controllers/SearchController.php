@@ -17,7 +17,7 @@ class SearchController extends Controller
     public function actionSearch()
     {
         $model = new Product();
-        if ($model->load(Yii::$app->request->post())) {
+        if ($model->load(Yii::$app->request->get())) {
             $query = Product::find()->where(['like', 'name', $model->name])->all();
             return $this->render('search', [
                 'model' => $model,

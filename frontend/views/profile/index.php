@@ -46,22 +46,41 @@ use yii\helpers\Html;
                                 <p class="text-muted mb-0">(097) 234-5678</p>
                             </div>
                         </div>
-                        <hr>
-                        <div class="row">
-                            <div class="col-sm-3">
-                                <p class="mb-0">Address</p>
-                            </div>
-                            <div class="col-sm-9">
-                                <p class="text-muted mb-0">Bay Area, San Francisco, CA</p>
-                            </div>
-                        </div>
+                        
+                       
                     </div>
                 </div>
                 <div class="row">
+                    <div class="col-md-12">
+                        <div class="card mb-4 mb-1">
+                            <div class="card-body">
+                                <p class="mb-4">
+                                    <span class="position-relative top-0 start-100 translate-middle badge rounded-pill bg-warning">
+                                        <?= $myproductsCount ?>
+
+                                    </span>
+                                    <span class="text-primary font-italic me-1">
+                                        <?= Html::a(
+                                            'all listed products',
+                                            ['product/my-products'],
+                                            [
+                                                'class' => 'text-decoration-none',
+                                            ]
+                                        );
+                                        ?>
+                                    </span>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
                     <div class="col-md-6">
                         <div class="card mb-4 mb-md-0">
                             <div class="card-body">
                                 <p class="mb-4">
+                                    <span class="position-relative top-0 start-100 translate-middle badge rounded-pill bg-warning">
+                                        <?= $countSoldProducts ?>
+
+                                    </span>
                                     <span class="text-primary font-italic me-1">
                                         <?= Html::a(
                                             'Sold products',
@@ -80,6 +99,10 @@ use yii\helpers\Html;
                         <div class="card mb-4 mb-md-1">
                             <div class="card-body">
                                 <p class="mb-4">
+                                    <span class="position-relative top-0 start-100 translate-middle badge rounded-pill bg-warning">
+                                        <?= $boughtProductsCount ?>
+
+                                    </span>
                                     <span class="text-primary font-italic me-1">
                                         <?= Html::a(
                                             'bought products:',
@@ -98,7 +121,11 @@ use yii\helpers\Html;
                         <div class="card mb-4 ">
                             <div class="card-body">
                                 <p class="mb-4">
-                                    <span class="text-primary font-italic me-1">
+                                    <span class="position-relative top-0 start-100 translate-middle badge rounded-pill bg-warning">
+                                        <?= $acceptOrdersCount ?>
+
+                                    </span>
+                                    <span class="text-primary font-italic ">
                                         <?= Html::a(
                                             'accept to sell your product',
                                             ['order/accept-orders'],
@@ -115,7 +142,12 @@ use yii\helpers\Html;
                     <div class="col-md-6">
                         <div class="card mb-4 mb-md-0">
                             <div class="card-body">
-                                <p class="mb-4"><span class="text-primary font-italic me-1">
+                                <p class="mb-4">
+                                    <span class="position-relative top-0 start-100 translate-middle badge rounded-pill bg-warning">
+                                        <?= $waitingListCount ?>
+
+                                    </span>
+                                    <span class="text-primary font-italic me-1">
                                         <?= Html::a(
                                             'your waiting list:',
                                             ['order/waiting-list'],

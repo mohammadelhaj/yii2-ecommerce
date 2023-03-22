@@ -100,14 +100,11 @@ function getCategories($categories, $parent_id = -1)
                 <div class="col-md-7">
                     <?php
                     $model = new Product();
-                    $form = ActiveForm::begin(['action' => ['search/search']]); ?>
+                    $form = ActiveForm::begin(['method' => 'get','action' => ['search/search']]); ?>
                     <div class="d-flex form-inputs">
-
-
                         <input class="form-control" id="product-id" name="Product[name]" type="text" placeholder="Search any product...">
                         <button style="display: none;" type="submit" class="btn btn-primary"><i class="fa fa-search"></i></button>
                         <i class="fa fa-search"></i>
-
                     </div>
                     <?php $form = ActiveForm::end(); ?>
                 </div>

@@ -78,11 +78,10 @@ class SiteController extends Controller
      */
     public function actionIndex()
     {
-        $allProducts = Product::find()->where(['!=', 'created_by', Yii::$app->user->id])->all();
+        $allProducts = Product::find()->all();
         $slider = Slider::find()->all();
 
         return $this->render('index', [
-
             'products' => $allProducts,
             'slider' => $slider
         ]);

@@ -31,31 +31,27 @@ class ProductController extends Controller
 
         if ($model->load(Yii::$app->request->post())  && $image->load(Yii::$app->request->post())) {
             $model->created_by = $user;
+            $model->status = "pending";
             $image->image_name = UploadedFile::getInstances($image, 'image_name');
             if ($image->image_name && $image->validate()) {
                 if (!file_exists(Yii::getAlias('@static'))) {
                     mkdir(Yii::getAlias('@static'), 0777, true);
                 }
                 $path = Yii::getAlias('@static') . DIRECTORY_SEPARATOR;
-                $lastProduct = Product::find()->orderBy(['ID' => SORT_DESC])->limit(1)->one();
+                $model->save();
+
+
+                $lastProduct = Product::find()->orderBy(['id' => SORT_DESC])->limit(1)->one();
                 foreach ($image->image_name as $image) {
                     $img = new ProductImage();
                     $img->image_name = time() . rand(100, 999) . '.' . $image->extension;
-                    if ($img->product_id == null) {
-                        $img->product_id = 1;
-                    } else {
-                        $img->product_id = $lastProduct->id + 1;
-                    }
-
+                    $img->product_id = $lastProduct->id;
                     if ($img->save(false)) {
                         $image->saveAs($path . $img->image_name);
                     }
                 }
             }
-            if ($model->save()) {
-
-                return $this->redirect(['add-product']);
-            }
+            return $this->redirect(['add-product']);
         }
         return $this->render('add_product', [
             'model' => $model,
@@ -81,8 +77,15 @@ class ProductController extends Controller
     public function actionView($product_id)
     {
         $model = Product::find()->where(['id' => $product_id])->one();
-        return $this->render('view',[
+        return $this->render('view', [
             'model' => $model,
         ]);
+    }
+    public function actionMyProducts()
+    {
+        $user = Yii::$app->user->id;
+        $myproducts = Product::find()->where(['created_by' => $user])->all();
+
+        return $this->render('myProducts', ['model' => $myproducts]);
     }
 }
