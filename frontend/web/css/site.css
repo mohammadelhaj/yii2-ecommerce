@@ -101,3 +101,17 @@ a.desc:after {
 {
     text-decoration: none;
 }
+.carousel_images{
+    object-fit: contain;
+}
+.banner_desc{
+    color: black;
+    position:absolute;
+    bottom: 50%;
+    right: 30%;
+
+}
+.desc_container{
+    
+   display: inline-block;
+}

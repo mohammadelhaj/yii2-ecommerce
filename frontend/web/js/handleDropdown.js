@@ -32,9 +32,10 @@ $(document).ready(function () {
         });
     });
     $(".dropdown-menu [data-bs-toggle='dropdown']").on("click", function (event) {
+        console.log("asdads")
         event.preventDefault();
         event.stopPropagation();
-
+        console.log("hell owrol");
         $(this).parents(".dropdown-menu").first().find(".show").removeClass("show");
         $(this).parents(".dropdown-menu").first().find("[aria-expanded='true']").attr("aria-expanded", false);
 

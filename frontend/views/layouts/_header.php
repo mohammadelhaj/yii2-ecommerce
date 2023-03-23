@@ -44,17 +44,32 @@ function getCategories($categories, $parent_id = -1)
     return $result;
 }
 ?>
-<header class="section-header">
 
+<header class="section-header">
+    <nav class="navbar navbar-expand-lg bg-dark navbar-light d-none d-lg-block" id="templatemo_nav_top">
+        <div class="container text-light">
+            <div class="w-100 d-flex justify-content-between">
+                <div>
+                    <i class="fa fa-envelope mx-2"></i>
+                    <a class="navbar-sm-brand text-light text-decoration-none" href="mailto:info@company.com">info@company.com</a>
+                    <i class="fa fa-phone mx-2"></i>
+                    <a class="navbar-sm-brand text-light text-decoration-none" href="tel:010-020-0340">010-020-0340</a>
+                </div>
+                <div>
+                    <a class="text-light" href="#"><i class="fa fa-facebook-f fa-sm fa-fw me-2"></i></a>
+                    <a class="text-light" href="#"><i class="fa fa-instagram fa-sm fa-fw me-2"></i></a>
+                    <a class="text-light" href="#"><i class="fa fa-twitter fa-sm fa-fw me-2"></i></a>
+                    <a class="text-light" href="#"><i class="fa fa-linkedin fa-sm fa-fw"></i></a>
+                </div>
+            </div>
+        </div>
+    </nav>
     <nav class="navbar navbar-dark navbar-expand p-0 bg-dark">
         <div class="container-fluid">
 
             <ul class="navbar-nav d-flex align-items-center">
                 <li class="nav-item">
                     <?php
-
-
-
                     if (!Yii::$app->user->isGuest) {
 
 
@@ -100,7 +115,7 @@ function getCategories($categories, $parent_id = -1)
                 <div class="col-md-7">
                     <?php
                     $model = new Product();
-                    $form = ActiveForm::begin(['method' => 'get','action' => ['search/search']]); ?>
+                    $form = ActiveForm::begin(['method' => 'get', 'action' => ['search/search']]); ?>
                     <div class="d-flex form-inputs">
                         <input class="form-control" id="product-id" name="Product[name]" type="text" placeholder="Search any product...">
                         <button style="display: none;" type="submit" class="btn btn-primary"><i class="fa fa-search"></i></button>
@@ -117,7 +132,7 @@ function getCategories($categories, $parent_id = -1)
                             </span>
                             <div class="d-flex flex-column ms-2">
                                 <span class="fw-bold">add a product</span>
-                                
+
                             </div>
                         </div>
                     </a>
@@ -146,4 +161,5 @@ function getCategories($categories, $parent_id = -1)
             </div>
         </div>
     </nav>
+    
 </header>
