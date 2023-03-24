@@ -77,8 +77,10 @@ class ProductController extends Controller
     public function actionView($product_id)
     {
         $model = Product::find()->where(['id' => $product_id])->one();
+        $products = Product::find()->all();
         return $this->render('view', [
             'model' => $model,
+            'products' => $products,
         ]);
     }
     public function actionMyProducts()

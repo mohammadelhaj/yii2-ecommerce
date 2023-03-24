@@ -17,7 +17,7 @@
                             <h3 class="h2"> Curabitur fringilla Curabitur fringilla </h3>
                             <p>
                                 Phasellus consequat nunc eu arcu venenatis, at consectetur augue aliquam. Vestibulum ornare risus in sapien aliquam, ac convallis odio finibus. In
-                                <span class="text-success"><u>mkcous</u></span> and <span class="text-success"><u>kklou3</u></span> and <span class="text-success"><u>qunfh</u></span>
+                                <span class="text-success"><u>Sell</u></span> and <span class="text-success"><u>Buy</u></span>
                             </p>
                         </div>
                     </div>

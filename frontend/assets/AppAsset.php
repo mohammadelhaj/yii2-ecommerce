@@ -16,21 +16,19 @@ class AppAsset extends AssetBundle
         'css/site.css',
         'css/navbar.css',
         'css/custom.css',
-        'css/slick.min.css',
-        'css/slick-theme.css',
-        'css/slick-theme.min.css',
-        'css/templatemo.css',
-        'css/templatemo.min.css',
+        
+        // 'css/templatemo.css',
+        // 'css/templatemo.min.css',
     ];
     public $js = [
-        'js/bootstrap-notify.js',
         'js/bootstrap.bundle.min.js',
-        'js/handleDropdown.js',
+        'js/bootstrap-notify.js',
         'js/bootstrap-notify.min.js',
+        'js/handleDropdown.js',
+        
         'js/templatemo.js',
         'js/templatemo.min.js',
         'js/slick.min.js',
-        
         'js/custom.js',
     ];
     public $depends = [

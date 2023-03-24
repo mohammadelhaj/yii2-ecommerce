@@ -1,62 +1,196 @@
 <?php
 
-use yii\helpers\Html; ?>
-<div class="container my-5">
-    <div class="row">
-        <div class="col-md-5">
-            <div class="main-img">
-                <img class="img-fluid" src="http://static.local/<?= $model->productImages[0]->image_name ?>" width="510px" height="340px">
-                <div class="row my-3 previews">
-                    <?php
+use yii\helpers\Html;
+use yii\helpers\Url;
+
+?>
+
+<section class="bg-light">
+    <div class="container pb-5">
+        <div class="row">
+            <div class="col-lg-5 mt-5">
+                <div class="card mb-3">
+                    <img class="card-img" src="/assets/img/24436387_0.webp" alt="Card image cap" id="main-image-cadre">
+                </div>
+                <div class="row">
+                    <div class="col-1 align-self-center">
+                        <a href="#multi-item-example" role="button" data-bs-slide="prev">
+                            <i class="text-dark fa fa-chevron-left"></i>
+                        </a>
+                    </div>
+
+                    <div id="multi-item-example" class="col-10 carousel slide carousel-wrapper" data-bs-ride="carousel">
+                        <div class="carousel-inner">
+                            <div class="carousel-item active">
+                                <div class="row">
+                                    <div class="col-4">
+                                        <a href="#">
+                                            <img class="card-img img-fluid" src="/assets/img/36637840_0.webp" alt="Product Image 1">
+                                        </a>
+                                    </div>
+                                    <div class="col-4">
+                                        <a href="#">
+                                            <img class="card-img img-fluid" src="/assets/img/chris-mustang-12-pro-max.webp" alt="Product Image 2">
+                                        </a>
+                                    </div>
+                                    <div class="col-4">
+                                        <a href="#">
+                                            <img class="card-img img-fluid" src="/assets/img/5028362_0.webp" alt="Product Image 3">
+                                        </a>
+                                    </div>
+
+                                </div>
+                            </div>
+                            <div class="carousel-item">
+                                <div class="row">
+                                    <div class="col-4">
+                                        <a href="#">
+                                            <img class="card-img img-fluid" src="/assets/img/a8317870-7eb0-4214-bc9e-7107e7732ff2-600x600.png" alt="Product Image 4">
+                                        </a>
+                                    </div>
+                                    <div class="col-4">
+                                        <a href="#">
+                                            <img class="card-img img-fluid" src="/assets/img/10466454_0.webp" alt="Product Image 5">
+                                        </a>
+                                    </div>
+                                    <div class="col-4">
+                                        <a href="#">
+                                            <img class="card-img img-fluid" src="/assets/img/images.jpg" alt="Product Image 6">
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-1 align-self-center">
+                        <a href="#multi-item-example" role="button" data-bs-slide="next">
+                            <i class="text-dark fa fa-chevron-right"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-7 mt-5">
+                <div class="card">
+                    <div class="card-body">
+                        <h1 class="h2">Active Wear</h1>
+                        <span class="h3 py-2">$25.00</span> <span class="h3 py-2 text-danger"><del> 50$</del></span>
 
 
+                        <ul class="list-inline">
+                            <li class="list-inline-item">
+                                <h6>Brand:</h6>
+                            </li>
+                            <li class="list-inline-item">
+                                <p class="text-muted"><strong>Easy Wear</strong></p>
+                            </li>
+                        </ul>
 
-                    foreach ($model->productImages as $img) {
+                        <h6>Description:</h6>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod temp incididunt ut labore et dolore magna aliqua. Quis ipsum suspendisse. Donec condimentum elementum convallis. Nunc sed orci a diam ultrices aliquet interdum quis nulla.</p>
+                        <ul class="list-inline">
+                            <li class="list-inline-item">
+                                <h6>Avaliable Color :</h6>
+                            </li>
+                            <li class="list-inline-item">
+                                <p class="text-muted"><strong>White / Black</strong></p>
+                            </li>
+                        </ul>
+
+                        <h6>Specification:</h6>
+                        <ul class="list-unstyled pb-3">
+                            <li>Lorem ipsum dolor sit</li>
+                            <li>Amet, consectetur</li>
+                            <li>Adipiscing elit,set</li>
+                            <li>Duis aute irure</li>
+                            <li>Ut enim ad minim</li>
+                            <li>Dolore magna aliqua</li>
+                            <li>Excepteur sint</li>
+                        </ul>
+                        <div class="row pb-3">
+                            <div class="col d-grid">
+                                <button type="submit" class="btn btn-success btn-lg" name="submit" value="buy">Buy</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</section>
+<div class="col-md-7">
+    <div class="px-2">
+        <div class="mb-3">
+            <span class="text-muted me-2">Category:</span>
+            <span class="fw-bold"><?= $model->category->name ?></span>
+        </div>
+        <h2 class="my-3"><?= $model->name ?></h2>
+        <div class="my-4">
+            <p class="mb-1 ">
+                <del><?= (int)($model->price + ((20 * $model->price) / 100)) ?> (<?= $model->currencyName->currency_name ?>)</del>
+                <span class="text-danger">(20% off)</span>
+            </p>
+            <p class="mb-1 display-6"><?= $model->price ?> (<?= $model->currencyName->currency_name ?>)</p>
+        </div>
+
+        <div class="my-4">
+            <h3 class="text-muted mb-3">Product Details</h3>
+            <p><?= $model->description ?></p>
+        </div>
+        <?php
+        if (!Yii::$app->user->id) {
+
+        ?>
+            <div class="d-flex my-5">
+                <div class="me-3">
+                    <?= Html::a('go to billing', ['order/checkout', 'product_id' => $model->id, 'owned_by' => $model->created_by], [
+                        'class' => 'btn btn-primary shadow',
+                    ]);
                     ?>
-                        <div class="col-md-3">
-                            <img class="w-100" src="http://static.local/<?= $img->image_name ?>" alt="Sale">
+                </div>
+            </div>
+        <?php } ?>
+    </div>
+</div>
+
+<div class="row">
+    <div class="row">
+        <section class="bg-light ">
+            <div class="container">
+                <div class="row text-center py-3">
+                    <div class="col-lg-6 m-auto">
+                        <h1 class="h1">Related product</h1>
+                    </div>
+                </div>
+                <div class="row slider">
+                    <?php
+                    foreach ($products as $product) {
+                    ?>
+                        <div class="col-12 col-md-4 mx-3 mb-4">
+                            <div class="card">
+                                <a href="<?= Url::to(['product/view', 'product_id' => $product->id]) ?>">
+                                    <img src="http://static.local/<?= $product->productImages[0]->image_name ?>" class="card-img-top" alt="...">
+                                </a>
+                                <div class="card-body">
+                                    <p class="card-text d-flex justify-content-between">
+                                        <span>
+                                            <a href="<?= Url::to(['product/view', 'product_id' => $product->id]) ?>" class="h2 text-decoration-none text-dark"><?= $product->name ?></a>
+                                        </span>
+                                        <span> <?= $product->price ?><?= $product->currencyName->currency_name ?>
+                                            <del class="text-danger"><?= (int)($product->price + ((20 * $product->price) / 100)) ?><?= $product->currencyName->currency_name ?></del>
+
+                                        </span>
+                                    </p>
+                                    <p class="card-text d-flex justify-content-between">
+                                        <span>Category: <?= $product->category->name ?></span> <span>added by: <?= $product->createdby->username ?></span>
+                                    </p>
+                                </div>
+                            </div>
                         </div>
                     <?php } ?>
                 </div>
-            </div>
-        </div>
-        <div class="col-md-7">
-            <div class="px-2">
-                <div class="mb-3">
-                    <span class="text-muted me-2">Category:</span>
-                    <span class="fw-bold"><?= $model->category->name ?></span>
-                </div>
-                <h2 class="my-3"><?= $model->name ?></h2>
-                <div class="my-4">
-                    <p class="mb-1 ">
-                        <del><?= (int)($model->price + ((20 * $model->price) / 100)) ?> (<?= $model->currencyName->currency_name ?>)</del>
-                        <span class="text-danger">(20% off)</span>
-                    </p>
-                    <p class="mb-1 display-6"><?= $model->price ?> (<?= $model->currencyName->currency_name ?>)</p>
-                </div>
-
-                <div class="my-4">
-                    <h3 class="text-muted mb-3">Product Details</h3>
-                    <p><?= $model->description ?></p>
-                </div>
-                <?php 
-                if (!Yii::$app->user->id) {                
-                
-                ?>
-                <div class="d-flex my-5">
-                    <div class="me-3">
-                        <?= Html::a('go to billing', ['order/checkout', 'product_id' => $model->id, 'owned_by' => $model->created_by], [
-                            'class' => 'btn btn-primary shadow',
-                        ]);
-                        ?>
-
-
-                    </div>
-
-                </div>
-                <?php } ?>
-            </div>
-        </div>
-
+        </section>
     </div>
 </div>
+<button class="slider-prev">Previous</button>
+<button class="slider-next">Next</button>

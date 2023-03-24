@@ -47,9 +47,9 @@ echo $this->render('_carousel', ['slider' => $slider]);
 
     </div>
 </section>
-<div class="row justify-content-left pt-3">
-    <section class="bg-light">
-        <div class="container py-5">
+<div class="row justify-content-left">
+    <section class="bg-light ">
+        <div class="container">
             <div class="row text-center py-3">
                 <div class="col-lg-6 m-auto">
                     <h1 class="h1">Featured Product</h1>
@@ -64,7 +64,7 @@ echo $this->render('_carousel', ['slider' => $slider]);
                 foreach ($products as $product) {
                 ?>
                     <div class="col-12 col-md-4 mb-4">
-                        <div class="card h-100">
+                        <div class="card">
                             <a href="<?= Url::to(['product/view', 'product_id' => $product->id]) ?>">
 
                                 <img src="http://static.local/<?= $product->productImages[0]->image_name ?>" class="card-img-top" alt="...">
