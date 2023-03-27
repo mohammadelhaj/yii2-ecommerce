@@ -5,11 +5,12 @@ use yii\helpers\Html;
 
 ?>
 
-<div class="row g-5 pt-2">
+<div class="container my-3">
+<div class="row pt-2">
 
     <div class="col-md-5 col-lg-4 order-md-last">
         <h4 class="d-flex justify-content-between align-items-center mb-3">
-            <span class="text-primary">product details:</span>
+            <span class="text-success">product details:</span>
           
         </h4>
         <ul class="list-group mb-3">
@@ -56,9 +57,10 @@ use yii\helpers\Html;
         </div>
         <hr class="my-4">
 
-        <?= Html::submitButton('Place your order', ['class' => 'w-100 btn btn-primary btn-lg']) ?>
+        <?= Html::submitButton('Place your order', ['class' => 'w-100 btn btn-success btn-lg']) ?>
 
 
         <?php ActiveForm::end(); ?>
     </div>
+</div>
 </div>

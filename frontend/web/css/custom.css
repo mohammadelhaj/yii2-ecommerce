@@ -9,3 +9,55 @@
     left: 100%;
     top: 0;
 }
+
+.carousel-control-prev {
+    width: 10%;
+}
+
+.carousel-control-next {
+
+    width: 10%;
+}
+
+.carousel-control-prev i,
+.carousel-control-next i {
+    color: #198754;
+    font-size: 3rem;
+}
+
+.carousel-control-prev:hover i,
+.carousel-control-next:hover i {
+    color: #156d44;
+    transition: color .2s;
+}
+
+.container_slider {
+
+    position: relative;
+}
+
+.slider-prev-rel,
+.slider-prev-rel:hover {
+    font-size: 2.1rem;
+    position: absolute;
+    top: 45%;
+    left: -25px;
+    background: none;
+    color: #156d44;
+    z-index: 10;
+}
+
+.slider-next-rel,
+.slider-next-rel:hover {
+    font-size: 2.1rem;
+    position: absolute;
+    top: 45%;
+    right: -25px;
+    background-color: #f8f9fa;
+    color: #156d44;
+    z-index: 10;
+    background: none;
+}
+.h300{
+height: 300px;
+}

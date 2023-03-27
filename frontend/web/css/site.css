@@ -1,3 +1,6 @@
+body{
+    background-color: #f8f9fa;
+}
 main > .container, main > .container-fluid
 {
     padding: 70px 15px 20px;

@@ -66,7 +66,7 @@ function getCategories($categories, $parent_id = -1)
                     <?php $form = ActiveForm::end(); ?>
                 </div>
                 <div class="col-md-3">
-                    <a href=<?= Url::to(['product/add-product']) ?> class="text-decoration-none">
+                    <a href=<?= Url::to(['product/add-product']) ?> class="text-decoration-none text-dark">
                         <div class="d-flex d-none d-md-flex flex-row align-items-center">
                             <span class="shop-bag">
                                 <i class='fa fa-plus'>
@@ -74,7 +74,6 @@ function getCategories($categories, $parent_id = -1)
                             </span>
                             <div class="d-flex flex-column ms-2">
                                 <span class="fw-bold">add a product</span>
-
                             </div>
                         </div>
                     </a>

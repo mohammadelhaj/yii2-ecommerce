@@ -12,6 +12,19 @@ $(document).ready(function () {
             }
         }],
     });
+    $('.sliderr').slick({
+        slidesToShow: 4,
+        slidesToScroll: 2,
+        dots: true,
+        infinite: true,
+        arrows: false,
+        responsive: [{
+            breakpoint: 992,
+            settings: {
+                slidesToShow: 2,
+            }
+        }],
+    });
     $('.slider-prev').click(function () {
         $('.slider').slick('slickPrev');
     });
@@ -25,12 +38,6 @@ $(document).ready(function () {
         $("#main-image-cadre").attr("src", $(this).children("img").attr("src"));
         console.log($(this).children("img").attr("src"));
     });
+    
 });
-const dropdownToggles = document.querySelectorAll('.dropdown > a');
 
-dropdownToggles.forEach(toggle => {
-  toggle.addEventListener('click', (event) => {
-    event.preventDefault();
-    toggle.parentNode.classList.toggle('active');
-  });
-});
