@@ -26,3 +26,11 @@ $(document).ready(function () {
         console.log($(this).children("img").attr("src"));
     });
 });
+const dropdownToggles = document.querySelectorAll('.dropdown > a');
+
+dropdownToggles.forEach(toggle => {
+  toggle.addEventListener('click', (event) => {
+    event.preventDefault();
+    toggle.parentNode.classList.toggle('active');
+  });
+});
