@@ -38,6 +38,19 @@ $(document).ready(function () {
         $("#main-image-cadre").attr("src", $(this).children("img").attr("src"));
         console.log($(this).children("img").attr("src"));
     });
-    
+    $(".title").click(function () {
+        console.log("clicked");
+        $(".dropdown_menu").toggleClass("active");
+    });
+    $(".dropdown_item").hover(function () {
+        console.log($(this));
+        var $dropdown = $(this).find('.side_dropdown');
+        $('.side_dropdown').not($dropdown).removeClass("sideActive");
+
+     
+        $dropdown.toggleClass("sideActive");
+    });
+
+
 });
 

@@ -23,7 +23,7 @@ AppAsset::register($this);
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css" />
 
-    
+
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -43,7 +43,7 @@ AppAsset::register($this);
             <?= $content ?>
         </div>
     </main>
-    <footer class="bg-dark ps-2" id="tempaltemo_footer">
+    <footer class="bg-dark" id="site_footer">
         <div class="container">
             <div class="row">
 
@@ -121,7 +121,7 @@ AppAsset::register($this);
             </div>
         </div>
 
-        <div class="w-100 bg-black py-3">
+        <div class="bg-black py-3">
             <div class="container">
                 <div class="row pt-2">
                     <div class="col-12">

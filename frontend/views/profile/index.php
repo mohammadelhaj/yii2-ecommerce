@@ -2,7 +2,7 @@
 
 use yii\helpers\Html;
 ?>
-<section style="background-color: #eee;">
+<section style="background-color: #f8f9fa;">
     <div class="container py-3">
 
         <div class="row">
@@ -55,7 +55,7 @@ use yii\helpers\Html;
                         <div class="card mb-4 mb-1">
                             <div class="card-body">
                                 <p class="mb-4">
-                                    <span class="position-relative top-0 start-100 translate-middle badge rounded-pill bg-warning">
+                                    <span class="position-relative top-0 start-100 translate-middle badge rounded-pill bg-success">
                                         <?= $myproductsCount ?>
 
                                     </span>
@@ -77,7 +77,7 @@ use yii\helpers\Html;
                         <div class="card mb-4 mb-md-0">
                             <div class="card-body">
                                 <p class="mb-4">
-                                    <span class="position-relative top-0 start-100 translate-middle badge rounded-pill bg-warning">
+                                    <span class="position-relative top-0 start-100 translate-middle badge rounded-pill bg-success">
                                         <?= $countSoldProducts ?>
 
                                     </span>
@@ -99,7 +99,7 @@ use yii\helpers\Html;
                         <div class="card mb-4 mb-md-1">
                             <div class="card-body">
                                 <p class="mb-4">
-                                    <span class="position-relative top-0 start-100 translate-middle badge rounded-pill bg-warning">
+                                    <span class="position-relative top-0 start-100 translate-middle badge rounded-pill bg-success">
                                         <?= $boughtProductsCount ?>
 
                                     </span>
@@ -121,7 +121,7 @@ use yii\helpers\Html;
                         <div class="card mb-4 ">
                             <div class="card-body">
                                 <p class="mb-4">
-                                    <span class="position-relative top-0 start-100 translate-middle badge rounded-pill bg-warning">
+                                    <span class="position-relative top-0 start-100 translate-middle badge rounded-pill bg-success">
                                         <?= $acceptOrdersCount ?>
 
                                     </span>
@@ -143,7 +143,7 @@ use yii\helpers\Html;
                         <div class="card mb-4 mb-md-0">
                             <div class="card-body">
                                 <p class="mb-4">
-                                    <span class="position-relative top-0 start-100 translate-middle badge rounded-pill bg-warning">
+                                    <span class="position-relative top-0 start-100 translate-middle badge rounded-pill bg-success">
                                         <?= $waitingListCount ?>
 
                                     </span>
