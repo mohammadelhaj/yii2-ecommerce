@@ -38,19 +38,45 @@ $(document).ready(function () {
         $("#main-image-cadre").attr("src", $(this).children("img").attr("src"));
         console.log($(this).children("img").attr("src"));
     });
+
+
+    /*****************handle dropdown menu and side dropdown menu *******************/
     $(".title").click(function () {
         console.log("clicked");
         $(".dropdown_menu").toggleClass("active");
     });
-    $(".dropdown_item").hover(function () {
-        console.log($(this));
-        var $dropdown = $(this).find('.side_dropdown');
-        $('.side_dropdown').not($dropdown).removeClass("sideActive");
 
-     
+    $(".dropdown_item").hover(function () {
+        var $dropdown = $(this).children('.side_dropdown');
+        $(this).children().find('.side_dropdown').removeClass('sideActive');
+        $(this).siblings().find('.side_dropdown').removeClass('sideActive');
         $dropdown.toggleClass("sideActive");
+    });
+
+    $(".side_dropdown").hover(function (event) {
+        event.stopPropagation();
+    });
+    /*******************subcategory for offcanvas********************* */
+    $(".chev").click(function () {
+        console.log("clicked");
+        var $dropdown = $(this).siblings('.continer').children('.row').children('.cateItems');
+        $dropdown.toggleClass("catActive");
+        $(this).toggleClass("rotate");
     });
 
 
 });
+
+function openNav() {
+    document.getElementById("mySidenav").style.width = "300px";
+    document.getElementById("mySidenav").style.zIndex = "999";
+    document.getElementById("main").style.marginLeft = "250px";
+    document.body.style.backgroundColor = "rgba(0,0,0,0.4)";
+}
+
+function closeNav() {
+    document.getElementById("mySidenav").style.width = "0";
+    document.getElementById("main").style.marginLeft = "0";
+    document.body.style.backgroundColor = "white";
+}
 

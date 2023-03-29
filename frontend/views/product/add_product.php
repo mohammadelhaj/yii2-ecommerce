@@ -8,7 +8,7 @@ $this->title = 'add product';
 ?>
 
 
-<div class="container">
+<div class="container my-3">
     <?php
     if (Yii::$app->user->isGuest) {
         echo "<h1>please log in to add product";

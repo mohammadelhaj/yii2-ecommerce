@@ -100,19 +100,23 @@
 
     position: absolute;
     left: 0;
+    top: 100%;
     width: 100%;
     z-index: 13;
-    background-color: #198754;
+    background-color: #f8f9fa;
     overflow: hidden;
     max-height: 0;
+    font-size: 0;
     transition: max-height 0.5s ease-out;
+    color: black;
 }
 
 .dropdown_menu.active {
     overflow: visible;
     max-height: 500px;
     z-index: 131;
-    transition: max-height 0.5s ease-in;
+    font-size: 20px;
+    transition: max-height 0.5s ease-in, font-size 0.1s ease-in;
 }
 
 .dropdown_item {
@@ -121,27 +125,275 @@
 }
 
 .side_dropdown {
+    font-size: 0;
     position: absolute;
-    
-  
-    width: 100%;
+    width: 80%;
     max-height: 0;
-    height: 150px;
-    background-color: blue;
+
+    background-color: #cbcdcf;
     cursor: pointer;
+    transition: max-height 0.5s ease-out;
 }
 
 .side_dropdown.sideActive {
 
+    font-size: 20px;
     right: -100%;
     width: 100%;
     max-height: 800px;
     z-index: 999;
     transition: max-height 0.5s ease-in;
-    background-color: blue;
+
 
 }
 
+.greenHover {
+    font-size: large;
+    font-weight: bold;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    color: #000;
+    text-decoration: none;
+}
+
+.greenHover:hover {
+    color: #198754;
+    transition: color 0.2s ease-in;
+}
+
+.burger_menu {
+    display: none;
+}
+
+.sidenav {
+    height: 100%;
+    /* 100% Full-height */
+    width: 0;
+    /* 0 width - change this with JavaScript */
+    position: fixed;
+    /* Stay in place */
+    z-index: 1;
+    /* Stay on top */
+    top: 0;
+    left: 0;
+    background-color: #111;
+    /* Black*/
+    overflow-x: hidden;
+    /* Disable horizontal scroll */
+    padding-top: 60px;
+    /* Place content 60px from the top */
+    transition: 0.5s;
+    /* 0.5 second transition effect to slide in the sidenav */
+}
+
+/* The navigation menu links */
+.sidenav a {
+    padding: 8px 8px 8px 32px;
+    text-decoration: none;
+    font-size: 25px;
+    color: #818181;
+    display: block;
+    transition: 0.3s;
+}
+
+/* When you mouse over the navigation links, change their color */
+.sidenav a:hover {
+    color: #f1f1f1;
+}
+
+/* Position and style the close button (top right corner) */
+.sidenav .closebtn {
+    position: absolute;
+    top: 0;
+    right: 25px;
+    font-size: 36px;
+    margin-left: 50px;
+}
+
+/* Style page content - use this if you want to push the page content to the right when you open the side navigation */
+#main {
+    transition: margin-left .5s;
+    padding: 20px;
+}
+
+/* On smaller screens, where height is less than 450px, change the style of the sidenav (less padding and a smaller font size) */
+@media screen and (max-height: 450px) {
+    .sidenav {
+        padding-top: 15px;
+    }
+
+    .sidenav a {
+        font-size: 18px;
+    }
+}
+
+.firstCatItem {
+    border-bottom: 1px solid white;
+}
+
+.chev {
+    cursor: pointer;
+    vertical-align: middle;
+    transition: transform 0.2s ease;
+
+}
+
+.chev:hover {
+    cursor: pointer;
+}
+
+.cateItems {
+    font-size: 0;
+    max-height: 0;
+    position: relative;
+    top: 0;
+    height: 300px;
+    width: 300px;
+    display: block;
+
+}
+
+.cateItems.catActive {
+    font-size: 16px;
+    height: auto;
+    max-height: 500px;
+    display: block;
+    width: 300px;
+    border-bottom: 1px solid white;
+    margin-left: 3%;
+}
+
+.rotate {
+    transform: rotate(180deg);
+    transition: transform 0.2s ease;
+}
+
+.sellBtn {
+    display: none;
+}
+
+@media only screen and (min-width: 600px) and (max-width: 770px) {
+    .sellBtn {
+        display: inline-block;
+        position: fixed;
+        z-index: 9999;
+        left: 50%;
+        bottom: 30px;
+
+    }
+
+    .burger_menu {
+        font-size: 30px;
+        display: block;
+    }
+
+    .headerContent {
+        display: none;
+    }
+
+    .navi {
+        display: block;
+    }
+
+    .navi .row {
+        display: flex;
+        justify-content: center;
+
+    }
+
+    .navCol {
+        width: auto;
+    }
+
+    .navColCat {
+        display: none;
+    }
+
+}
+
+@media only screen and (min-width: 400px) and (max-width: 600px) {
+    .sellBtn {
+        display: inline-block;
+        position: fixed;
+        z-index: 9999;
+        left: 50%;
+        bottom: 30px;
+        border: 5px solid;
+        border-image: linear-gradient(to right, grey 25%, yellow 25%, yellow 50%, red 50%, red 75%, teal 75%) 5;
+
+    }
+
+    .search_container {
+        margin-bottom: 5px;
+    }
+
+    .burger_menu {
+        font-size: 30px;
+        display: block;
+    }
+
+    .headerContent {
+        display: none;
+    }
+
+    .navi {
+        display: inline-block;
+    }
+
+    .navi .row {
+        display: inline-block;
+    }
+
+    .navCol {
+        display: inline-block;
+        width: auto;
+    }
+
+    .navColCat {
+        display: none;
+    }
+
+}
+
+@media only screen and (min-width: 100px) and (max-width: 400px) {
+    .sellBtn {
+        display: inline-block;
+        position: fixed;
+        z-index: 9999;
+        left: 50%;
+        bottom: 30px;
+
+    }
+
+    .search_container {
+        margin-bottom: 5px;
+    }
+
+    .burger_menu {
+        font-size: 30px;
+        display: block;
+    }
+
+    .headerContent {
+        display: none;
+    }
+
+    .navi {
+        display: inline-block;
+    }
+
+    .navi .row {
+        display: inline-block;
+    }
+
+    .navCol {
+        display: inline-block;
+        width: auto;
+    }
+
+    .navColCat {
+        display: none;
+    }
+}
 
 #site_footer a {
     color: #dcdde1;
