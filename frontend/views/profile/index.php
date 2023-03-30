@@ -12,7 +12,7 @@ use yii\helpers\Html;
                         <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-chat/ava3.webp" alt="avatar" class="rounded-circle img-fluid" style="width: 150px;">
                         <h5 class="my-3"><?= $model->username ?></h5>
                         <div class="d-flex justify-content-center mb-2">
-                            <button type="button" class="btn btn-outline-primary ms-1">Edit profile</button>
+                            <?= Html::a('Update profile', ['profile/update-profile'], ['class' => 'btn btn-outline-success ms-1 text-decoration-none']) ?>
                         </div>
                     </div>
                 </div>
@@ -59,12 +59,12 @@ use yii\helpers\Html;
                                         <?= $myproductsCount ?>
 
                                     </span>
-                                    <span class="text-primary font-italic me-1">
+                                    <span class="text-success font-italic me-1">
                                         <?= Html::a(
                                             'all listed products',
                                             ['product/my-products'],
                                             [
-                                                'class' => 'text-decoration-none',
+                                                'class' => 'text-decoration-none  text-success',
                                             ]
                                         );
                                         ?>
@@ -81,12 +81,12 @@ use yii\helpers\Html;
                                         <?= $countSoldProducts ?>
 
                                     </span>
-                                    <span class="text-primary font-italic me-1">
+                                    <span class="text-success font-italic me-1">
                                         <?= Html::a(
                                             'Sold products',
                                             ['order/sold-products'],
                                             [
-                                                'class' => 'text-decoration-none',
+                                                'class' => 'text-decoration-none  text-success',
                                             ]
                                         );
                                         ?>
@@ -103,12 +103,12 @@ use yii\helpers\Html;
                                         <?= $boughtProductsCount ?>
 
                                     </span>
-                                    <span class="text-primary font-italic me-1">
+                                    <span class="text-success font-italic me-1">
                                         <?= Html::a(
                                             'bought products:',
                                             ['order/bought-products'],
                                             [
-                                                'class' => 'text-decoration-none',
+                                                'class' => 'text-decoration-none text-success',
                                             ]
                                         );
                                         ?>
@@ -125,12 +125,12 @@ use yii\helpers\Html;
                                         <?= $acceptOrdersCount ?>
 
                                     </span>
-                                    <span class="text-primary font-italic ">
+                                    <span class="text-success font-italic ">
                                         <?= Html::a(
                                             'accept to sell your product',
                                             ['order/accept-orders'],
                                             [
-                                                'class' => 'text-decoration-none',
+                                                'class' => 'text-decoration-none text-success',
                                             ]
                                         );
                                         ?>
@@ -147,12 +147,12 @@ use yii\helpers\Html;
                                         <?= $waitingListCount ?>
 
                                     </span>
-                                    <span class="text-primary font-italic me-1">
+                                    <span class="text-success font-italic me-1">
                                         <?= Html::a(
                                             'your waiting list:',
                                             ['order/waiting-list'],
                                             [
-                                                'class' => 'text-decoration-none',
+                                                'class' => 'text-decoration-none  text-success',
                                             ]
                                         );
                                         ?>

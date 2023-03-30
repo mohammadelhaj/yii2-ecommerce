@@ -14,10 +14,12 @@ use yii\filters\AccessControl;
 use common\models\LoginForm;
 use common\models\Product;
 use common\models\Slider;
+use common\models\User;
 use frontend\models\PasswordResetRequestForm;
 use frontend\models\ResetPasswordForm;
 use frontend\models\SignupForm;
 use frontend\models\ContactForm;
+use yii\web\UploadedFile;
 
 /**
  * Site controller
@@ -265,4 +267,6 @@ class SiteController extends Controller
             'model' => $model
         ]);
     }
+
+    
 }

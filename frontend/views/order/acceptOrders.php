@@ -4,7 +4,7 @@
     use yii\helpers\Html;
 
     if (empty($model)) {
-        echo "<h3>you did not sell any products</h3>";
+        echo "<h3>no products to accept</h3>";
     } else {
         foreach ($model as $order) : ?>
             <div class="col-md-12">

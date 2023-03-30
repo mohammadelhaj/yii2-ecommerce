@@ -13,6 +13,7 @@ use yii\web\IdentityInterface;
  *
  * @property integer $id
  * @property string $username
+ * @property string $profile_pic
  * @property string $password_hash
  * @property string $password_reset_token
  * @property string $verification_token
@@ -56,6 +57,8 @@ class User extends ActiveRecord implements IdentityInterface
         return [
             ['status', 'default', 'value' => self::STATUS_INACTIVE],
             ['status', 'in', 'range' => [self::STATUS_ACTIVE, self::STATUS_INACTIVE, self::STATUS_DELETED]],
+            [['profile_pic'], 'safe'],
+            [['profile_pic'], 'file', 'extensions' => 'png, jpg, jpeg, gif,webp','skipOnEmpty' => false],
         ];
     }
 

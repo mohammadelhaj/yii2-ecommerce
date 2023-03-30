@@ -92,7 +92,7 @@ echo $this->render('_carousel', ['slider' => $slider]);
                 <div class="card">
                     <a href="<?= Url::to(['product/view', 'product_id' => $product->id]) ?>">
 
-                        <img src="http://static.local/<?= $product->productImages[0]->image_name ?>" class="card-img-top" alt="...">
+                        <img src="/assets/img/a8317870-7eb0-4214-bc9e-7107e7732ff2-600x600.png" class="card-img-top" alt="...">
                     </a>
                     <div class="card-body">
                         <p class="card-text d-flex justify-content-between">
@@ -117,7 +117,7 @@ echo $this->render('_carousel', ['slider' => $slider]);
                 <div class="card">
                     <a href="<?= Url::to(['product/view', 'product_id' => $product->id]) ?>">
 
-                        <img src="http://static.local/<?= $product->productImages[0]->image_name ?>" class="card-img-top" alt="...">
+                        <img src="/assets/img/banner_img_02.jpg" class="card-img-top" alt="...">
                     </a>
                     <div class="card-body">
                         <p class="card-text d-flex justify-content-between">

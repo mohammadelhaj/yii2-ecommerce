@@ -120,7 +120,7 @@
 }
 
 .dropdown_item {
-   
+
     cursor: pointer;
 }
 
@@ -230,6 +230,14 @@
     border-bottom: 1px solid white;
 }
 
+
+.menuTitle:hover {
+    font-size: 30px;
+    color: green;
+    border-bottom: 1px solid red;
+    transition: color 1s ease, font-size 0.2s ease;
+}
+
 .chev {
     cursor: pointer;
     vertical-align: middle;
@@ -259,7 +267,13 @@
     display: block;
     width: 300px;
     border-bottom: 1px solid white;
-    margin-left: 3%;
+  
+}
+
+.cateItems span{
+    border: 1px solid green;
+    margin-left: 5%;
+
 }
 
 .rotate {

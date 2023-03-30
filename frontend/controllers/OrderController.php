@@ -99,7 +99,7 @@ class OrderController extends Controller
             ->all();
         if (!empty($rejectOtherRequests)) {
             foreach ($rejectOtherRequests as $req) {
-                $req->status = "rejected";
+                $req->order_status = "rejected";
                 $req->save();
             }
         }

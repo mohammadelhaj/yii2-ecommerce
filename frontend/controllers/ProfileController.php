@@ -32,4 +32,25 @@ class ProfileController extends Controller
 
         ]);
     }
+    public function actionUpdateProfile()
+    {
+        $user = Yii::$app->user->id;
+        $model = User::find()->where(['id' => $user])->one();
+
+        if ($model->load(Yii::$app->request->post())) {
+            $model->profile_pic = UploadedFile::getInstance($model, 'profile_pic');
+
+            if ($model->upload($model->profile_pic)) {
+                if ($model->save(false)) {
+
+                    return $this->redirect(['product']);
+                }
+            } else {
+                Yii::$app->getSession()->setFlash('error', 'Failed to upload image');
+            }
+        }
+        return $this->render('update',[
+            'model' => $model,
+        ]);
+    }
 }

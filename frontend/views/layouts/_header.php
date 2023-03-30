@@ -17,31 +17,68 @@ function getCategories($categories, $parent_id = -1)
 
     foreach ($categories as $category) {
         if ($category->parent_id == $parent_id) {
-            if ($parent_id == -1) {
-                $result .= '<li class="nav-item dropdown">';
-            } else {
-                $result .= '<li class="nav-item dropdown dropend">';
-            }
 
-
+            $result .= '<div class="row ms-1 parent dropdown_item ">
+                    <a href="" class="menuTitle text-decoration-none text-dark">'
+                . $category->name .
+                '</a>';
             if ($category->getSubcategories()->count() > 0) {
 
-                $result .= '<a class="nav-link dropdown-toggle dropdown-item" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="true">'
-                    . $category->name .
-                    '</a>';
-                $result .= '<ul class="dropdown-menu dropdown-submenu" aria-labelledby="navbarDropdown">';
+                $result .= '<div class="side_dropdown"><div class="row dropdown_item text-dark ">';
                 $result .= getCategories($category->getSubcategories()->all(), $category->id);
-                $result .= '</ul>';
-            } else {
-
-                $result .= '<a class="nav-link" href="' . Url::to(['product/all', 'category_id' => $category->id]) . '">' . $category->name . '</a>';
+                $result .= '</div> </div>';
             }
 
-            $result .= '</li>';
+            $result .= '</div>';
         }
     }
 
     return $result;
+}
+function getCategoriesOffcanvas($categories, $parent_id = -1)
+{
+    $result = '';
+
+    foreach ($categories as $category) {
+        if ($category->parent_id == $parent_id) {
+
+            $result .= ' <div class="itemContainer col-md-12" style="font-size: 18px;">
+            <span class="firstCatItem">'
+                . $category->name .
+                ' </span>
+            <i class="chev fa fa-chevron-up float-end"></i>';
+
+            if ($category->getSubcategories()->count() > 0) {
+
+                $result .= '<div class="continer">
+                <div class="row">
+                    <div class="cateItems col-md-12">
+                        <span>' . $category->name . '</span> <i class="chev fa fa-chevron-up float-end"></i>';
+                $result .= getCategoriesOffcanvas($category->getSubcategories()->all(), $category->id);
+                $result .= '</div> </div> </div>';
+            }
+
+            $result .= '</div>';
+        }
+    }
+
+    return $result;
+}
+function getNestedSubs($categories)
+{
+    $result = '';
+    foreach ($categories as $category) {
+        if ($category->getSubcategories()->count() > 0) {
+
+
+            $result .= '<div class="continer">
+        <div class="row">
+            <div class="cateItems col-md-12">
+                <span>' . $category->name . '</span> <i class="chev fa fa-chevron-up float-end"></i>';
+            $result .= getNestedSubs($category->getSubcategories()->all());
+            $result .= '</div> </div> </div>';
+        }
+    }
 }
 ?>
 
@@ -64,81 +101,60 @@ function getCategories($categories, $parent_id = -1)
     <div class="container text-white border borde-white">
         <div class="row p-2">
             <div class="itemContainer col-md-12" style="font-size: 18px;">
-                <span class="firstCatItem">asdasd </span>
+                <span class="firstCatItem">1 </span>
                 <i class="chev fa fa-chevron-up float-end"></i>
                 <div class="continer">
                     <div class="row">
                         <div class="cateItems col-md-12">
-                            <span>asddasd</span> <i class="chev fa fa-chevron-up float-end"></i>
+                            <span>2</span> <i class="chev fa fa-chevron-up float-end"></i>
                             <div class="continer">
                                 <div class="row">
                                     <div class="cateItems col-md-12">
-                                        <span>asddasd</span>
+                                        <span>3</span>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
-
             </div>
             <div class="itemContainer col-md-12" style="font-size: 18px;">
-                <span class="firstCatItem">asdasd </span>
+                <span class="firstCatItem">1 </span>
                 <i class="chev fa fa-chevron-up float-end"></i>
                 <div class="continer">
                     <div class="row">
                         <div class="cateItems col-md-12">
-                            <span>asddasd</span> <i class="chev fa fa-chevron-up float-end"></i>
+                            <span>2</span> <i class="chev fa fa-chevron-up float-end"></i>
                             <div class="continer">
                                 <div class="row">
                                     <div class="cateItems col-md-12">
-                                        <span>asddasd</span>
+                                        <span>3</span>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
-
             </div>
             <div class="itemContainer col-md-12" style="font-size: 18px;">
-                <span class="firstCatItem">asdasd </span>
+                <span class="firstCatItem">1 </span>
                 <i class="chev fa fa-chevron-up float-end"></i>
                 <div class="continer">
                     <div class="row">
                         <div class="cateItems col-md-12">
-                            <span>asddasd</span> <i class="chev fa fa-chevron-up float-end"></i>
+                            <span>2</span> <i class="chev fa fa-chevron-up float-end"></i>
                             <div class="continer">
                                 <div class="row">
                                     <div class="cateItems col-md-12">
-                                        <span>asddasd</span>
+                                        <span>3</span>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
-
             </div>
-            <div class="itemContainer col-md-12" style="font-size: 18px;">
-                <span class="firstCatItem">asdasd </span>
-                <i class="chev fa fa-chevron-up float-end"></i>
-                <div class="continer">
-                    <div class="row">
-                        <div class="cateItems col-md-12">
-                            <span>asddasd</span> <i class="chev fa fa-chevron-up float-end"></i>
-                            <div class="continer">
-                                <div class="row">
-                                    <div class="cateItems col-md-12">
-                                        <span>asddasd</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
 
-            </div>
         </div>
     </div>
 
@@ -151,14 +167,17 @@ function getCategories($categories, $parent_id = -1)
                 <i class="fa fa-user mx-2"></i>
                 <a class="navbar-sm-brand text-light text-decoration-none" href="mailto:info@company.com">contact us</a>
                 |
-                <i class="fa fa-sign-in mx-2"></i>
-                <a class="navbar-sm-brand text-light text-decoration-none" href="tel:010-020-0340">signup</a>
+                <i class="fa fa-truck mx-2"></i>
+                free shipping
             </div>
             <div>
                 <a class="text-light" href="https://fb.com/templatemo" target="_blank" rel="sponsored"><i class="fa fa-facebook-f fa-sm fa-fw me-2"></i></a>
                 <a class="text-light" href="https://www.instagram.com/" target="_blank"><i class="fa fa-instagram fa-sm fa-fw me-2"></i></a>
                 <a class="text-light" href="https://twitter.com/" target="_blank"><i class="fa fa-twitter fa-sm fa-fw me-2"></i></a>
                 <a class="text-light" href="https://www.linkedin.com/" target="_blank"><i class="fa fa-linkedin fa-sm fa-fw"></i></a>
+            </div>
+            <div>
+            <a class="navbar-sm-brand text-light text-decoration-none" href="mailto:info@company.com">logout</a>
             </div>
         </div>
     </div>
@@ -197,9 +216,7 @@ function getCategories($categories, $parent_id = -1)
                 <div class="col-md-3 headerContent ">
 
                     <div class="d-flex d-md-flex flex-row align-items-center">
-                        <div class="d-flex flex-column ms-2 d-lg-block">
-                            <span class="fw-bold"><u>english</u></span>
-                        </div>
+                        
                         <div class="d-flex flex-column ms-3 d-lg-block">
                             <?php
                             if (Yii::$app->user->isGuest) {
@@ -208,7 +225,7 @@ function getCategories($categories, $parent_id = -1)
                             ?>
                                 <span class="fw-bold"><u>login</u></span>
                             <?php } else {
-                            ?> <span class="fw-bold"><u>logout</u></span>
+                            ?>
                             <?php
                             } ?>
                         </div>
@@ -221,6 +238,20 @@ function getCategories($categories, $parent_id = -1)
                                 <div class=" d-flex flex-column ms-1 d-lg-block">
                                     <span class="fw-bold">Sell</span>
                                 </div>
+                            </div>
+                        </a>
+                        <a href=<?= Url::to(['profile/index']) ?> class="text-decoration-none text-dark">
+                            <div class="d-flex d-md-flex flex-row align-items-center">
+                              
+                                    <span class="shop-bag ms-4">
+                                        <i class='fa fa-user'>
+                                        </i>
+                                    </span>
+                              
+                                <div class=" d-flex flex-column ms-1 d-lg-block">
+                                    <span class="fw-bold">profile</span>
+                                </div>
+
                             </div>
                         </a>
                     </div>
@@ -242,20 +273,9 @@ function getCategories($categories, $parent_id = -1)
                     </div>
                 </div>
                 <div class="dropdown_menu container ">
-                    <div class="row ms-1 parent dropdown_item "><a href="" class="text-decoration-none text-dark">asd</a>
-                        <div class="side_dropdown">
-                            <div class="row dropdown_item text-dark ">1
-                                <div class="side_dropdown">
-                                    <div class="row dropdown_item text-dark ">2
-                                        <div class="side_dropdown">
-                                            <div class="row dropdown_item text-dark ">3
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                    <?php
+                    echo getCategories($categories, -1);
+                    ?>
                 </div>
             </div>
             <div class="col-md-2 p-2 text-center navCol">

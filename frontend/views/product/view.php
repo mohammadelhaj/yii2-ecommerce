@@ -102,12 +102,18 @@ use yii\helpers\Url;
                             <li>Excepteur sint</li>
                         </ul>
                         <div class="row pb-3">
+
                             <div class="col d-grid">
-                               
-                                <?= Html::a('go to billing', ['order/checkout', 'product_id' => $model->id, 'owned_by' => $model->created_by], [
-                                    'class' => 'btn btn-success btn-lg',
-                                ]);
+                                <?php
+                                if (!Yii::$app->user->id) {
+
+
                                 ?>
+                                    <?= Html::a('go to billing', ['order/checkout', 'product_id' => $model->id, 'owned_by' => $model->created_by], [
+                                        'class' => 'btn btn-success btn-lg',
+                                    ]);
+                                    ?>
+                                <?php } ?>
                             </div>
                         </div>
                     </div>
