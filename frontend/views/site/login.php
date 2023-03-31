@@ -10,10 +10,9 @@ use yii\bootstrap5\ActiveForm;
 $this->title = 'Login';
 
 ?>
-<div class="container pt-0 mt-0">
-    <div class="row justify-content-center">
-
-        <div class="col-md-6 w-50">
+<div class="container my-3 px-5">
+    <div class="row ">
+        <div class=" col-lg-12 col-md-12">
             <div class="card mt-0">
                 <div class="card-body">
 

@@ -105,7 +105,7 @@ use yii\helpers\Url;
 
                             <div class="col d-grid">
                                 <?php
-                                if (!Yii::$app->user->id) {
+                                if (Yii::$app->user->id != $model->created_by) {
 
 
                                 ?>

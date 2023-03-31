@@ -33,7 +33,7 @@ $this->title = 'add product';
                 <div style="display: inline-block;vertical-align: top;">
                     <?= $form->field($model, 'currency')->dropDownList(
                         $currency,
-                        ['prompt' => 'Select a currency', 'id' => '']
+                        ['prompt' => 'Select a currency']
                     ); ?>
                 </div>
             </div>

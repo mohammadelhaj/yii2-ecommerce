@@ -163,13 +163,7 @@ function getNestedSubs($categories)
 <nav class="navbar bg-dark navbar-light  d-lg-block d-md-block">
     <div class="container text-light">
         <div class="w-100 d-flex justify-content-between">
-            <div>
-                <i class="fa fa-user mx-2"></i>
-                <a class="navbar-sm-brand text-light text-decoration-none" href="mailto:info@company.com">contact us</a>
-                |
-                <i class="fa fa-truck mx-2"></i>
-                free shipping
-            </div>
+         
             <div>
                 <a class="text-light" href="https://fb.com/templatemo" target="_blank" rel="sponsored"><i class="fa fa-facebook-f fa-sm fa-fw me-2"></i></a>
                 <a class="text-light" href="https://www.instagram.com/" target="_blank"><i class="fa fa-instagram fa-sm fa-fw me-2"></i></a>
@@ -177,7 +171,32 @@ function getNestedSubs($categories)
                 <a class="text-light" href="https://www.linkedin.com/" target="_blank"><i class="fa fa-linkedin fa-sm fa-fw"></i></a>
             </div>
             <div>
-            <a class="navbar-sm-brand text-light text-decoration-none" href="mailto:info@company.com">logout</a>
+                <?php
+                $form = ActiveForm::begin([
+                    'action' => ['site/logout']
+                ]);
+                if (Yii::$app->user->isGuest) {
+
+                ?>
+
+
+                    <?= Html::submitButton('Log in', [
+                        'class' => 'navbar-sm-brand text-light text-decoration-none bg-dark',
+
+                    ]); ?>
+
+                <?php } else {
+                ?>
+
+                    <?= Html::submitButton('Log Out', [
+                        'class' => 'navbar-sm-brand text-light text-decoration-none bg-dark',
+
+                    ]); ?>
+
+                <?php }
+                ActiveForm::end();
+                ?>
+
             </div>
         </div>
     </div>
@@ -216,14 +235,16 @@ function getNestedSubs($categories)
                 <div class="col-md-3 headerContent ">
 
                     <div class="d-flex d-md-flex flex-row align-items-center">
-                        
+
                         <div class="d-flex flex-column ms-3 d-lg-block">
                             <?php
                             if (Yii::$app->user->isGuest) {
 
 
                             ?>
-                                <span class="fw-bold"><u>login</u></span>
+                                <a href=<?= Url::to(['site/signup']) ?> class="text-decoration-none text-dark"> <span class="fw-bold"><u>create account</u></span>
+                                </a>
+
                             <?php } else {
                             ?>
                             <?php
@@ -242,16 +263,19 @@ function getNestedSubs($categories)
                         </a>
                         <a href=<?= Url::to(['profile/index']) ?> class="text-decoration-none text-dark">
                             <div class="d-flex d-md-flex flex-row align-items-center">
-                              
+                                <?php
+                                if (Yii::$app->user->id) {
+
+                                ?>
                                     <span class="shop-bag ms-4">
                                         <i class='fa fa-user'>
                                         </i>
                                     </span>
-                              
-                                <div class=" d-flex flex-column ms-1 d-lg-block">
-                                    <span class="fw-bold">profile</span>
-                                </div>
+                                    <div class=" d-flex flex-column ms-1 d-lg-block">
 
+                                        <span class="fw-bold"><?=Yii::$app->user->identity->username?></span>
+                                    </div>
+                                <?php } ?>
                             </div>
                         </a>
                     </div>
@@ -265,7 +289,7 @@ function getNestedSubs($categories)
             <div class="col-md-1 navCol burger_menu">
                 <i class="fa fa-bars" onclick="openNav()"></i>
             </div>
-            <div class="col-md-3 col-lg-2 col-sm-2 d-lg-block d-md-block  bg-success text-white categories_dropdown p-3 navColCat navCol " style="font-size: 20px;">
+            <div class="col-md-3 col-lg-2 col-sm-2 d-lg-block   bg-success text-white categories_dropdown p-3 navColCat navCol " style="font-size: 20px;">
                 <div class="d-flex align-items-center justify-content-between">
                     <div class="title">
                         <i class="fa fa-bars"></i>

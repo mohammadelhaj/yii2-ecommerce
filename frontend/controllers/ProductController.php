@@ -11,12 +11,29 @@ use yii\helpers\ArrayHelper;
 use yii\web\Controller;
 use yii\web\Response;
 use yii\web\UploadedFile;
+use yii\filters\AccessControl;
 
 /**
  * Product controller
  */
 class ProductController extends Controller
 {
+    public function behaviors()
+    {
+        return [
+            'access' => [
+                'class' => AccessControl::class,
+                'only' => ['add-product'],
+                'rules' => [
+                    [
+                        'allow' => true,
+                        'actions' => ['add-product'],
+                        'roles' => ['@'],
+                    ],
+                ],
+            ],
+        ];
+    }
     public function actionAddProduct()
     {
         $user = Yii::$app->user->id;

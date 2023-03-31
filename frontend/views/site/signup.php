@@ -8,7 +8,8 @@ use yii\bootstrap5\Html;
 use yii\bootstrap5\ActiveForm;
 
 ?>
-<div class="site-signup">
+<div class="container my-2">
+    <div class="site-signup">
     <h1><?= Html::encode($this->title) ?></h1>
 
     <p>Please fill out the following fields to signup:</p>
@@ -31,3 +32,5 @@ use yii\bootstrap5\ActiveForm;
         </div>
     </div>
 </div>
+</div>
+
