@@ -38,18 +38,19 @@ class ProfileController extends Controller
         $model = User::find()->where(['id' => $user])->one();
 
         if ($model->load(Yii::$app->request->post())) {
-            $model->profile_pic = UploadedFile::getInstance($model, 'profile_pic');
-
-            if ($model->upload($model->profile_pic)) {
+            $uploadedFile = UploadedFile::getInstance($model, 'profile_pic');
+            $model->profile_pic = $uploadedFile;
+            if ($model->profile_pic && $model->validate()) {
+                $path = Yii::getAlias('@static') . DIRECTORY_SEPARATOR;
+                $model->profile_pic = time() . rand(100, 999) . '.' .  $uploadedFile->extension;
                 if ($model->save(false)) {
-
-                    return $this->redirect(['product']);
+                    $uploadedFile->saveAs($path .  $model->profile_pic);
+                    return $this->redirect(['index']);
                 }
-            } else {
-                Yii::$app->getSession()->setFlash('error', 'Failed to upload image');
             }
         }
-        return $this->render('update',[
+
+        return $this->render('update', [
             'model' => $model,
         ]);
     }

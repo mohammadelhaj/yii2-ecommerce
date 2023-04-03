@@ -33,9 +33,7 @@ class SliderController extends Controller
                     mkdir(Yii::getAlias('@static'), 0777, true);
                 }
                 $path = Yii::getAlias('@static') . DIRECTORY_SEPARATOR;
-
                 foreach ($model->name as $image) {
-
                     $img = new Slider();
                     $img->name = time() . rand(100, 999) . '.' . $image->extension;
                     if ($img->save(false)) {

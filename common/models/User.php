@@ -58,7 +58,9 @@ class User extends ActiveRecord implements IdentityInterface
             ['status', 'default', 'value' => self::STATUS_INACTIVE],
             ['status', 'in', 'range' => [self::STATUS_ACTIVE, self::STATUS_INACTIVE, self::STATUS_DELETED]],
             [['profile_pic'], 'safe'],
-            [['profile_pic'], 'file', 'extensions' => 'png, jpg, jpeg, gif,webp','skipOnEmpty' => false],
+            [['profile_pic'], 'file', 'extensions' => 'png, jpg, jpeg, gif,webp', 'skipOnEmpty' => false],
+            [['username'], 'safe'],
+            [['username'], 'unique'],
         ];
     }
 
@@ -113,7 +115,8 @@ class User extends ActiveRecord implements IdentityInterface
      * @param string $token verify email token
      * @return static|null
      */
-    public static function findByVerificationToken($token) {
+    public static function findByVerificationToken($token)
+    {
         return static::findOne([
             'verification_token' => $token,
             'status' => self::STATUS_INACTIVE

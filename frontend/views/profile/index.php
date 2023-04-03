@@ -9,7 +9,7 @@ use yii\helpers\Html;
             <div class="col-lg-4">
                 <div class="card mb-4">
                     <div class="card-body text-center">
-                        <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-chat/ava3.webp" alt="avatar" class="rounded-circle img-fluid" style="width: 150px;">
+                        <img src="http://static.local/<?= $model->profile_pic?>" alt="avatar" class="rounded-circle img-fluid" style="width: 150px;">
                         <h5 class="my-3"><?= $model->username ?></h5>
                         <div class="d-flex justify-content-center mb-2">
                             <?= Html::a('Update profile', ['profile/update-profile'], ['class' => 'btn btn-outline-success ms-1 text-decoration-none']) ?>
@@ -43,7 +43,7 @@ use yii\helpers\Html;
                                 <p class="mb-0">Phone</p>
                             </div>
                             <div class="col-sm-9">
-                                <p class="text-muted mb-0">(097) 234-5678</p>
+                                <p class="text-muted mb-0">+961 70 707 707</p>
                             </div>
                         </div>
                         

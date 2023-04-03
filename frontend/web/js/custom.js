@@ -59,10 +59,16 @@ $(document).ready(function () {
     /*******************subcategory for offcanvas********************* */
     $(".chev").click(function () {
         console.log("clicked");
-        var $dropdown = $(this).siblings('.continer').children('.row').children('.cateItems');
+        var $parent = $(this).parent();
+        var $dropdown = $parent.children('.continer').children('.row').children('.cateItems');
         $dropdown.toggleClass("catActive");
         $(this).toggleClass("rotate");
+        if (!$(this).hasClass("rotate")) {
+            $parent.find(".cateItems.catActive").removeClass("catActive");
+            $parent.find(".chev.rotate").removeClass("rotate");
+        }
     });
+
 
 
 });

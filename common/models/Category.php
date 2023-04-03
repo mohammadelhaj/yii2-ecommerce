@@ -27,9 +27,16 @@ class Category extends ActiveRecord
     {
         return $this->hasOne(Category::class, ['id' => 'parent_id']);
     }
+    public function getProduct(){
+        return $this->hasMany(Product::class,['category_id' => 'id']);
+    }
+    public function getProductImages(){
+        return $this->hasMany(ProductImage::class,['product_id' => 'id'])
+        ->via('product');
+    }
 
     public function getSubcategories()
     {
-        return $this->hasMany(Category::class, ['parent_id' => 'id']);
+        return $this->hasOne(Category::class, ['parent_id' => 'id']);
     }
 }

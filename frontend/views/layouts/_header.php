@@ -18,10 +18,11 @@ function getCategories($categories, $parent_id = -1)
     foreach ($categories as $category) {
         if ($category->parent_id == $parent_id) {
 
-            $result .= '<div class="row ms-1 parent dropdown_item ">
-                    <a href="" class="menuTitle text-decoration-none text-dark">'
+            $result .= "<div class=\"row ms-1 parent dropdown_item \">
+            <a href='" . Url::to(["category/index", "category_id" => $category->id]) . "' class='menuTitle text-decoration-none text-dark'>"
                 . $category->name .
                 '</a>';
+
             if ($category->getSubcategories()->count() > 0) {
 
                 $result .= '<div class="side_dropdown"><div class="row dropdown_item text-dark ">';
@@ -41,44 +42,30 @@ function getCategoriesOffcanvas($categories, $parent_id = -1)
 
     foreach ($categories as $category) {
         if ($category->parent_id == $parent_id) {
-
-            $result .= ' <div class="itemContainer col-md-12" style="font-size: 18px;">
+            if ($parent_id == -1) {
+                $result .= '<div class="itemContainer col-md-12" style="font-size: 18px;">
             <span class="firstCatItem">'
-                . $category->name .
-                ' </span>
-            <i class="chev fa fa-chevron-up float-end"></i>';
+                    . $category->name .
+                    ' </span>';
+            }
 
             if ($category->getSubcategories()->count() > 0) {
-
+                $result .= '<i class="chev fa fa-chevron-up float-end position-absolute end-0 me-2"></i>';
                 $result .= '<div class="continer">
                 <div class="row">
-                    <div class="cateItems col-md-12">
-                        <span>' . $category->name . '</span> <i class="chev fa fa-chevron-up float-end"></i>';
+                    <div class="cateItems col-md-12 ms-2">
+                        <span class ="">' . $category->subcategories->name . '</span>';
                 $result .= getCategoriesOffcanvas($category->getSubcategories()->all(), $category->id);
                 $result .= '</div> </div> </div>';
             }
 
-            $result .= '</div>';
+            if ($parent_id == -1) {
+                $result .= '</div>';
+            }
         }
     }
 
     return $result;
-}
-function getNestedSubs($categories)
-{
-    $result = '';
-    foreach ($categories as $category) {
-        if ($category->getSubcategories()->count() > 0) {
-
-
-            $result .= '<div class="continer">
-        <div class="row">
-            <div class="cateItems col-md-12">
-                <span>' . $category->name . '</span> <i class="chev fa fa-chevron-up float-end"></i>';
-            $result .= getNestedSubs($category->getSubcategories()->all());
-            $result .= '</div> </div> </div>';
-        }
-    }
 }
 ?>
 
@@ -100,60 +87,9 @@ function getNestedSubs($categories)
     </h3>
     <div class="container text-white border borde-white">
         <div class="row p-2">
-            <div class="itemContainer col-md-12" style="font-size: 18px;">
-                <span class="firstCatItem">1 </span>
-                <i class="chev fa fa-chevron-up float-end"></i>
-                <div class="continer">
-                    <div class="row">
-                        <div class="cateItems col-md-12">
-                            <span>2</span> <i class="chev fa fa-chevron-up float-end"></i>
-                            <div class="continer">
-                                <div class="row">
-                                    <div class="cateItems col-md-12">
-                                        <span>3</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="itemContainer col-md-12" style="font-size: 18px;">
-                <span class="firstCatItem">1 </span>
-                <i class="chev fa fa-chevron-up float-end"></i>
-                <div class="continer">
-                    <div class="row">
-                        <div class="cateItems col-md-12">
-                            <span>2</span> <i class="chev fa fa-chevron-up float-end"></i>
-                            <div class="continer">
-                                <div class="row">
-                                    <div class="cateItems col-md-12">
-                                        <span>3</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="itemContainer col-md-12" style="font-size: 18px;">
-                <span class="firstCatItem">1 </span>
-                <i class="chev fa fa-chevron-up float-end"></i>
-                <div class="continer">
-                    <div class="row">
-                        <div class="cateItems col-md-12">
-                            <span>2</span> <i class="chev fa fa-chevron-up float-end"></i>
-                            <div class="continer">
-                                <div class="row">
-                                    <div class="cateItems col-md-12">
-                                        <span>3</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+            <?php
+            echo getCategoriesOffcanvas($categories, -1);
+            ?>
 
         </div>
     </div>
@@ -163,9 +99,9 @@ function getNestedSubs($categories)
 <nav class="navbar bg-dark navbar-light  d-lg-block d-md-block">
     <div class="container text-light">
         <div class="w-100 d-flex justify-content-between">
-         
+
             <div>
-                <a class="text-light" href="https://fb.com/templatemo" target="_blank" rel="sponsored"><i class="fa fa-facebook-f fa-sm fa-fw me-2"></i></a>
+                <a class="text-light" href="https://fb.com/" target="_blank" rel="sponsored"><i class="fa fa-facebook-f fa-sm fa-fw me-2"></i></a>
                 <a class="text-light" href="https://www.instagram.com/" target="_blank"><i class="fa fa-instagram fa-sm fa-fw me-2"></i></a>
                 <a class="text-light" href="https://twitter.com/" target="_blank"><i class="fa fa-twitter fa-sm fa-fw me-2"></i></a>
                 <a class="text-light" href="https://www.linkedin.com/" target="_blank"><i class="fa fa-linkedin fa-sm fa-fw"></i></a>
@@ -273,7 +209,7 @@ function getNestedSubs($categories)
                                     </span>
                                     <div class=" d-flex flex-column ms-1 d-lg-block">
 
-                                        <span class="fw-bold"><?=Yii::$app->user->identity->username?></span>
+                                        <span class="fw-bold"><?= Yii::$app->user->identity->username ?></span>
                                     </div>
                                 <?php } ?>
                             </div>

@@ -80,12 +80,17 @@ class SiteController extends Controller
      */
     public function actionIndex()
     {
-        $allProducts = Product::find()->all();
+        $allProducts = Product::find()->where(['featured' => 'true'])->limit(6)->all();
+        $categoryOfTheMonth = category::find()->where(['parent_id' => -1, 'category_of_the_month' => 'true'])->limit(3)->all();
+        $trendingProduct = Product::find()->limit(15)->all();
         $slider = Slider::find()->all();
 
         return $this->render('index', [
             'products' => $allProducts,
-            'slider' => $slider
+            'category' => $categoryOfTheMonth,
+            'trending' => $trendingProduct,
+            'slider' => $slider,
+
         ]);
     }
 
@@ -267,6 +272,4 @@ class SiteController extends Controller
             'model' => $model
         ]);
     }
-
-    
 }

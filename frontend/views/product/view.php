@@ -72,8 +72,8 @@ use yii\helpers\Url;
             <div class="col-lg-7 mt-5">
                 <div class="card">
                     <div class="card-body">
-                        <h1 class="h2">Active Wear</h1>
-                        <span class="h3 py-2">$25.00</span> <span class="h3 py-2 text-danger"><del> 50$</del></span>
+                        <h1 class="h2"><?= $model->name ?></h1>
+                        <span class="h3 py-2"><?= $model->price ?></span><span class="h3 py-2 text-danger"><del> <?= $model->price * 1.5 ?></del></span>
 
 
                         <ul class="list-inline">
@@ -86,7 +86,9 @@ use yii\helpers\Url;
                         </ul>
 
                         <h6>Description:</h6>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod temp incididunt ut labore et dolore magna aliqua. Quis ipsum suspendisse. Donec condimentum elementum convallis. Nunc sed orci a diam ultrices aliquet interdum quis nulla.</p>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod temp incididunt ut
+                            labore et dolore magna aliqua. Quis ipsum suspendisse.
+                            Donec condimentum elementum convallis. Nunc sed orci a diam ultrices aliquet interdum quis nulla.</p>
                         <ul class="list-inline">
 
                         </ul>
@@ -164,66 +166,7 @@ use yii\helpers\Url;
                             </div>
                         </div>
                     </div>
-                    <div class="col-md-4 mx-3 mb-4">
-                        <div class="card">
-                            <a href="<?= Url::to(['product/view', 'product_id' => $product->id]) ?>">
-                                <img src="http://static.local/<?= $product->productImages[0]->image_name ?>" class="card-img-top" alt="...">
-                            </a>
-                            <div class="card-body">
-                                <p class="card-text d-flex justify-content-between">
-                                    <span>
-                                        <a href="<?= Url::to(['product/view', 'product_id' => $product->id]) ?>" class="h2 text-decoration-none text-dark"><?= $product->name ?></a>
-                                    </span>
-                                    <span> <?= $product->price ?><?= $product->currencyName->currency_name ?>
-                                        <del class="text-danger"><?= (int)($product->price + ((20 * $product->price) / 100)) ?><?= $product->currencyName->currency_name ?></del>
-                                    </span>
-                                </p>
-                                <p class="card-text d-flex justify-content-between">
-                                    <span>Category: <?= $product->category->name ?></span> <span>added by: <?= $product->createdby->username ?></span>
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-4 mx-3 mb-4">
-                        <div class="card">
-                            <a href="<?= Url::to(['product/view', 'product_id' => $product->id]) ?>">
-                                <img src="http://static.local/<?= $product->productImages[0]->image_name ?>" class="card-img-top" alt="...">
-                            </a>
-                            <div class="card-body">
-                                <p class="card-text d-flex justify-content-between">
-                                    <span>
-                                        <a href="<?= Url::to(['product/view', 'product_id' => $product->id]) ?>" class="h2 text-decoration-none text-dark"><?= $product->name ?></a>
-                                    </span>
-                                    <span> <?= $product->price ?><?= $product->currencyName->currency_name ?>
-                                        <del class="text-danger"><?= (int)($product->price + ((20 * $product->price) / 100)) ?><?= $product->currencyName->currency_name ?></del>
-                                    </span>
-                                </p>
-                                <p class="card-text d-flex justify-content-between">
-                                    <span>Category: <?= $product->category->name ?></span> <span>added by: <?= $product->createdby->username ?></span>
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-4 mx-3 mb-4">
-                        <div class="card">
-                            <a href="<?= Url::to(['product/view', 'product_id' => $product->id]) ?>">
-                                <img src="http://static.local/<?= $product->productImages[0]->image_name ?>" class="card-img-top" alt="...">
-                            </a>
-                            <div class="card-body">
-                                <p class="card-text d-flex justify-content-between">
-                                    <span>
-                                        <a href="<?= Url::to(['product/view', 'product_id' => $product->id]) ?>" class="h2 text-decoration-none text-dark"><?= $product->name ?></a>
-                                    </span>
-                                    <span> <?= $product->price ?><?= $product->currencyName->currency_name ?>
-                                        <del class="text-danger"><?= (int)($product->price + ((20 * $product->price) / 100)) ?><?= $product->currencyName->currency_name ?></del>
-                                    </span>
-                                </p>
-                                <p class="card-text d-flex justify-content-between">
-                                    <span>Category: <?= $product->category->name ?></span> <span>added by: <?= $product->createdby->username ?></span>
-                                </p>
-                            </div>
-                        </div>
-                    </div>
+
                 <?php } ?>
             </div>
 
